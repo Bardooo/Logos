@@ -3,7 +3,9 @@ import React from 'react'
 import geo from '../assets/img/geo.svg'
 import calling from '../assets/img/calling.svg'
 import search from '../assets/img/search.svg'
-import banner from '../assets/img/banner.png'
+import banner from '../assets/img/banner.jpg'
+import banner2x from '../assets/img/banner@2x.jpg'
+import banner3x from '../assets/img/banner@3x.jpg'
 
 const Header = () => {
   return (
@@ -28,7 +30,7 @@ const Header = () => {
         </div>
       </div>
       <div className="header__bottom">
-        <img src={banner} alt="предложение" className="header__bottom-img" />
+        <img src={banner} srcSet={`${banner2x} 2x, ${banner3x} 3x`} alt="предложение" className="header__bottom-img" />
       </div>
     </div>
   )
