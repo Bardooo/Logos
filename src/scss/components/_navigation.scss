@@ -1,20 +1,22 @@
 .navigation {
 
   &__inner {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 88px 0 80px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    &-text {
-      padding: 29px 0;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 21px;
-      color: #CFCFCF;
-      cursor: pointer;
-      &:hover {
-        opacity: 0.5;
-        transition: opacity 0.3s ease-in-out;
+    &-list {
+      justify-content: center;
+      display: flex;
+      &-text {
+        margin: 0 30px;
+        padding: 29px 0;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        color: #CFCFCF;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.5;
+          transition: opacity 0.3s ease-in-out;
+        }
       }
     }
   }
