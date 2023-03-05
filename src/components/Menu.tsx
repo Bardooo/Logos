@@ -22,6 +22,36 @@ const Menu = ({items}) => {
           <MenuSwiper items={items} />
         </div>
       </div>
+      <div className="menu__inner">
+        <div className="menu__inner-block">
+          <h1 className="menu__inner-block-title">СУПЫ</h1>
+          <MenuSwiper items={items} />
+        </div>
+      </div>
+      <div className="menu__inner">
+        <div className="menu__inner-block">
+          <h1 className="menu__inner-block-title">РЫБНЫЕ БЛЮДА</h1>
+          <MenuSwiper items={items} />
+        </div>
+      </div>
+      <div className="menu__inner">
+        <div className="menu__inner-block">
+          <h1 className="menu__inner-block-title">ГРИЛЬ МЕНЮ</h1>
+          <MenuSwiper items={items} />
+        </div>
+      </div>
+      <div className="menu__inner">
+        <div className="menu__inner-block">
+          <h1 className="menu__inner-block-title">ФИРМЕННЫЕ БЛЮДА</h1>
+          <MenuSwiper items={items} />
+        </div>
+      </div>
+      <div className="menu__inner">
+        <div className="menu__inner-block">
+          <h1 className="menu__inner-block-title">НАПИТКИ</h1>
+          <MenuSwiper items={items} />
+        </div>
+      </div>
     </div>
   );
 };
