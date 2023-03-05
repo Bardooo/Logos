@@ -1,5 +1,6 @@
 .card {
   &__inner {
+    cursor: pointer;
     width: 325px;
     min-height: 385px;
     background-color: #494544;
@@ -7,6 +8,10 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    &:hover {
+      filter: drop-shadow(0px 30px 45px rgba(43, 40, 40, 0.6));
+      transition: all 0.3s;
+    }
     &-img {
       width: 325px;
       height: 227px;
