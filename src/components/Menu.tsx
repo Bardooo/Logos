@@ -1,57 +1,13 @@
 import React from 'react';
-import MenuSwiper from './MenuSwiper'
+import MenuInner from './MenuInner'
 
-const Menu = ({items}) => {
+const Menu = ({items, navigationTitles}) => {
+  console.log(navigationTitles);
   return (
     <div className='menu'>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">ХОЛОДНЫЕ ЗАКУСКИ</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">ГОРЯЧИЕ ЗАКУСКИ</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">МЯСНЫЕ БЛЮДА</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">СУПЫ</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">РЫБНЫЕ БЛЮДА</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">ГРИЛЬ МЕНЮ</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">ФИРМЕННЫЕ БЛЮДА</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
-      <div className="menu__inner">
-        <div className="menu__inner-block">
-          <h1 className="menu__inner-block-title">НАПИТКИ</h1>
-          <MenuSwiper items={items} />
-        </div>
-      </div>
+      {navigationTitles.map((item: any, index: Number) => (
+        <MenuInner key={index} {...item} items={items} />
+      ))}
     </div>
   );
 };

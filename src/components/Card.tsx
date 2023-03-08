@@ -2,7 +2,16 @@ import React from 'react';
 
 import cart from '../assets/img/cart.svg';
 
-const Card = ({ id, title, imageUrl, weight, text, price }) => {
+type CardProps = { 
+  id: number,
+  title: string,
+  imageUrl: string,
+  weight: number,
+  text: string,
+  price: number
+}
+
+const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price }) => {
   return (
     <div className="card">
       <div className="card__inner">
