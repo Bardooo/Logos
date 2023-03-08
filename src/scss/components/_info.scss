@@ -54,10 +54,11 @@
         cursor: pointer;
         &:hover p {
           color: #79B282;
+          transition: all 0.5s;
         }
-        &:hover img {
-          stroke: #79B282;
+        &:hover .info__inner-links-button-img * {
           fill: #79B282;
+          transition: all 0.5s;
         }
         &-img {
           margin-bottom: 26px;

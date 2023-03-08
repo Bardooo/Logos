@@ -1,8 +1,8 @@
 import React from 'react'
 
-import onion from '../assets/img/onion.svg'
-import flash from '../assets/img/flash.svg'
-import chef from '../assets/img/chef.svg'
+import {ReactComponent as Onion} from '../assets/img/onion.svg'
+import {ReactComponent as Flash} from '../assets/img/flash.svg'
+import {ReactComponent as Chef} from '../assets/img/chef.svg'
 
 const Info = () => {
   return (
@@ -15,19 +15,19 @@ const Info = () => {
         </div>
         <div className="info__inner-links">
           <div className="info__inner-links-button">
-            <img src={onion} alt="onion" className="info__inner-links-button-img" />
+            <Onion className="info__inner-links-button-img" />
             <p className="info__inner-links-button-text">Свежайшие продукты</p>
           </div>
           <div className="info__inner-links-button">
-            <img src={flash} alt="flash" className="info__inner-links-button-img" />
+            <Flash className="info__inner-links-button-img" />
             <p className="info__inner-links-button-text">Быстрая доставка</p>
           </div>
           <div className="info__inner-links-button">
-            <img src={chef} alt="chef" className="info__inner-links-button-img" />
+            <Chef className="info__inner-links-button-img" />
             <p className="info__inner-links-button-text">Лучшие повара</p>
           </div>
           <div className="info__inner-links-button">
-            <img src={onion} alt="onion" className="info__inner-links-button-img" />
+            <Onion className="info__inner-links-button-img" />
             <p className="info__inner-links-button-text">Свежайшие продукты</p>
           </div>
         </div>
