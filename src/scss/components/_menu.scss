@@ -3,17 +3,15 @@
     margin-top: 54px;
     padding-bottom: 50px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    &-block {
-      &-title {
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-        color: #FFFFFF;
-        padding-left: 19px;
-        border-left: 4px solid #618967;
-        margin-left: 92px;
-        margin-bottom: 54px;
-      }
+    &-block-title {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 39px;
+      color: #FFFFFF;
+      padding-left: 19px;
+      border-left: 4px solid #618967;
+      margin-left: 92px;
+      margin-bottom: 54px;
     }
   }
 }

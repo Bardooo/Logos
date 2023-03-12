@@ -1,12 +1,21 @@
 import React from 'react';
-import MenuInner from './MenuInner'
+import MenuSwiper from './MenuSwiper'
 
-const Menu = ({items, navigationTitles}) => {
-  console.log(navigationTitles);
+type MenuProps = {
+  items: {},
+  navigationTitles: any[]
+}
+
+const Menu: React.FC<MenuProps> = ({items, navigationTitles}) => {
   return (
     <div className='menu'>
-      {navigationTitles.map((item: any, index: Number) => (
-        <MenuInner key={index} {...item} items={items} />
+      {navigationTitles.map((item: {id: Number, title: String}) => (
+        <div className="menu__inner" >
+          <div className="menu__inner-block">
+            <h1 className="menu__inner-block-title">{item.title}</h1>
+            <MenuSwiper items={items} />
+          </div>
+        </div>
       ))}
     </div>
   );

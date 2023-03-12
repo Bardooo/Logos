@@ -3,7 +3,11 @@ import Card from '../components/Card'
 
 import 'swiper/css';
 
-const MenuSwiper = ({items}) => {  
+type MenuSwiperProps = {
+  items: any,
+}
+
+const MenuSwiper: React.FC<MenuSwiperProps> = ({items}) => {  
   return (
     <Swiper
       spaceBetween={-140}
