@@ -58,6 +58,11 @@
       color: #79B282;
       transition: all 0.5s;
     }
+    &:hover {
+      box-shadow: 0px 40px 50px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(2px);
+      transition: all 0.5s;
+    }
     &:hover .info__inner-links-button-img * {
       fill: #79B282;
       transition: all 0.5s;
