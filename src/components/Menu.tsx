@@ -5,7 +5,7 @@ type navigationTitlesType = {
   id: number,
   title: string
 }
-type itemsType = {
+export type itemsType = {
   id: number,
   imageUrl: string,
   title: string,

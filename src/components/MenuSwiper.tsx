@@ -1,10 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Card from '../components/Card'
 
+import {itemsType} from './Menu'
+
 import 'swiper/css';
 
 type MenuSwiperProps = {
-  items: any,
+  items: itemsType[],
 }
 
 const MenuSwiper: React.FC<MenuSwiperProps> = ({items}) => {  
