@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Header from './components/Header';
 import Navigation from './components/Navigation';
+import Info from './components/Info';
 import Menu from './components/Menu';
 import './scss/app.scss';
 
@@ -33,6 +34,7 @@ function App() {
       <Header />
       <Navigation />
       <Menu items={items} navigationTitles={navigationTitles} />
+      <Info />
     </div>
   );
 }
