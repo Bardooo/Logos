@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Info from './components/Info';
 import Menu from './components/Menu';
+import Footer from './components/Footer';
 import './scss/app.scss';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <Navigation />
       <Menu items={items} navigationTitles={navigationTitles} />
       <Info />
+      <Footer />
     </div>
   );
 }
