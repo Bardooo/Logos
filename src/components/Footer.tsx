@@ -1,6 +1,9 @@
 import React from 'react'
 import arrow from '../assets/img/arrow.svg'
 
+const footerLinks = ['Пользовательское соглашение', 'Карта сайта', 'Политика конфиденциальности']
+const footerNav = ['О ресторане', 'Условия доставки', 'Возврат товара', 'Акции']
+
 const Footer = () => {
   return (
     <div className='footer'>
@@ -14,16 +17,15 @@ const Footer = () => {
           <h4 className="footer__inner-info-title">LOGOS</h4>
           <p className="footer__inner-info-text">© ООО СК «АПШЕРОН» <br/> Все права защищены. 2010-2020</p>
           <ul className="footer__inner-info-links">
-            <li className="footer__inner-info-links-item">Пользовательское соглашение</li>
-            <li className="footer__inner-info-links-item">Карта сайта</li>
-            <li className="footer__inner-info-links-item">Политика конфиденциальности</li>
+            {footerLinks.map((item: string) => (
+              <li className="footer__inner-info-links-item">{item}</li>
+            ))}
           </ul>
         </div>
         <ul className="footer__inner-nav">
-          <li className="footer__inner-nav-item">О ресторане</li>
-          <li className="footer__inner-nav-item">Условия доставки</li>
-          <li className="footer__inner-nav-item">Возврат товара</li>
-          <li className="footer__inner-nav-item">Акции</li>
+          {footerNav.map((item: string) => (
+            <li className="footer__inner-nav-item">{item}</li>
+          ))}
         </ul>
       </div>
     </div>
