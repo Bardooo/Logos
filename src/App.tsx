@@ -34,9 +34,9 @@ function App() {
     <div className="App">
       <Header />
       <Navigation />
-      {/* <Menu items={items} navigationTitles={navigationTitles} /> */}
-      {/* <Info /> */}
-      {/* <Footer /> */}
+      <Menu items={items} navigationTitles={navigationTitles} />
+      <Info />
+      <Footer />
     </div>
   );
 }
