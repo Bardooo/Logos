@@ -33,10 +33,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Navigation />
-      <Menu items={items} navigationTitles={navigationTitles} />
-      <Info />
-      <Footer />
+      {/* <Navigation /> */}
+      {/* <Menu items={items} navigationTitles={navigationTitles} /> */}
+      {/* <Info /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
