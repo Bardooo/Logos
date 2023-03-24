@@ -6,7 +6,7 @@ import {ReactComponent as Chef} from '../assets/img/chef.svg'
 
 const Info = () => {
   return (
-    <div className='info'>
+    <section className='info'>
       <div className="info__inner">
         <div className="info__inner-main">
           <h1 className="info__inner-main-title">НАШЕ КАФЕ</h1>
@@ -32,7 +32,7 @@ const Info = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

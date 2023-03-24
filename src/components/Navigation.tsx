@@ -2,7 +2,7 @@ import React from 'react'
 
 const Navigation = () => {
   return (
-    <div className='navigation'>
+    <section className='navigation'>
       <div className="navigation__inner">
         <ul className="navigation__inner-list">
           <li className="navigation__inner-list-text active">Холодные закуски</li>
@@ -15,7 +15,7 @@ const Navigation = () => {
           <li className="navigation__inner-list-text">Напитки</li>
         </ul>
       </div>
-    </div>
+    </section>
   )
 }
 

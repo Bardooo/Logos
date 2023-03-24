@@ -9,7 +9,7 @@ import banner3x from '../assets/img/banner@3x.jpg'
 
 const Header = () => {
   return (
-    <div className="header">
+    <section className="header">
       <div className="header__top">
         <h4 className="header__top-logo">LOGOS</h4>
         <div className="header__top-input">
@@ -32,7 +32,7 @@ const Header = () => {
       <div className="header__bottom">
         <img src={banner} srcSet={`${banner2x} 2x, ${banner3x} 3x`} alt="предложение" className="header__bottom-img" />
       </div>
-    </div>
+    </section>
   )
 }
 
