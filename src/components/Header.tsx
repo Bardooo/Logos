@@ -12,6 +12,12 @@ const Header = () => {
   return (
     <section className="header">
       <div className="header__top">
+        <div className="header__top-menu">
+          <div className="header__top-menu-btn">
+            <span className="header__top-menu-btn-span"></span>
+          </div>
+          <p className="header__top-menu-text">МЕНЮ</p>
+        </div>
         <h4 className="header__top-logo">LOGOS</h4>
         <div className="header__top-input">
           <img src={geo} alt="геоточка" className="header__top-input-geo-img" />
