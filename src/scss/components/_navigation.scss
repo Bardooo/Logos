@@ -1,7 +1,10 @@
 .navigation {
   &__inner {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    overflow: scroll;
     &-list {
+      width: 1440px;
       justify-content: center;
       display: flex;
       &-text {
@@ -16,7 +19,11 @@
           opacity: 0.5;
           transition: opacity 0.3s ease-in-out;
         }
-      }
+      } 
+    }
+    
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 }
