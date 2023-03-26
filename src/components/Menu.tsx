@@ -21,7 +21,7 @@ type MenuProps = {
 
 const Menu: React.FC<MenuProps> = ({items, navigationTitles}) => {
   return (
-    <div className='menu'>
+    <section className='menu'>
       {navigationTitles.map((item) => (
         <div className="menu__inner" >
           <div className="menu__inner-block">
@@ -30,7 +30,7 @@ const Menu: React.FC<MenuProps> = ({items, navigationTitles}) => {
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 
