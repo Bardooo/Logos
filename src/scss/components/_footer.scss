@@ -68,7 +68,6 @@
 
 @media (max-width: 1200px) {
   .footer__inner {
-    display: flex;
     justify-content: center;
     margin-left: -102px;
     &-nav {
@@ -92,5 +91,16 @@
     &-up-button-img {
       padding: 20px 16px
     }
+  }
+}
+@media (max-width: 360px) {
+  .footer__inner {
+    margin-left: -67px;
+  }
+  .footer__inner-info {
+    margin-left: -5px;
+  }
+  .footer__inner-up-button-img {
+    padding: 13px 8px;
   }
 }
