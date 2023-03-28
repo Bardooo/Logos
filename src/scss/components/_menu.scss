@@ -16,3 +16,18 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .menu__inner-block-title {
+    margin-left: 35px;
+  }
+}
+@media (max-width: 785px) {
+  .menu__inner-block-title {
+    margin-left: 15px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+}
