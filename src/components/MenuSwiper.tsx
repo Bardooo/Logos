@@ -5,43 +5,42 @@ import {itemsType} from './Menu'
 
 import 'swiper/css';
 
-type breakpointsType = {
+const breakpoints = {
   320: {
-    slidesPerView: number;
-    spaceBetween: number;
-  };
+    slidesPerView: 1,
+    spaceBetween: -15
+  },
   450: {
-    slidesPerView: number;
-    spaceBetween: number;
-  };
+    slidesPerView: 1,
+    spaceBetween: -100
+  },
   552: {
-    slidesPerView: number;
-    spaceBetween: number;
-  };
+    slidesPerView: 1,
+    spaceBetween: -200
+  },
   700: {
-    slidesPerView: number;
-    spaceBetween: number;
-  };
+    slidesPerView: 2,
+    spaceBetween: -20
+  },
   784: {
-    slidesPerView: number;
-    spaceBetween: number;
-  };
+    slidesPerView: 2,
+    spaceBetween: -100
+  },
   1090: {
-    slidesPerView: number;
-    spaceBetween: number;
-  };
+    slidesPerView: 3,
+    spaceBetween: -100
+  },
   1470: {
-    slidesPerView: number;
-    spaceBetween: number;
-  };
-};
+    slidesPerView: 4,
+    spaceBetween: -140
+  }
+}
 
 type MenuSwiperProps = {
   items: itemsType[],
-  breakpoints: breakpointsType
 }
 
-const MenuSwiper: React.FC<MenuSwiperProps> = ({items, breakpoints}) => {  
+const MenuSwiper: React.FC<MenuSwiperProps> = ({items}) => {  
   return (
     <Swiper
     loop={true}
