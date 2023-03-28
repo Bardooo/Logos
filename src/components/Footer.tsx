@@ -5,7 +5,7 @@ const footerNav = ['О ресторане', 'Условия доставки', '
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <section className='footer'>
       <div className="footer__inner">
         <div className="footer__inner-up">
           <div className="footer__inner-up-button">
@@ -27,7 +27,7 @@ const Footer = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   )
 }
 
