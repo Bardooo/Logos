@@ -5,8 +5,6 @@ const footerLinks = ['Пользовательское соглашение', '�
 const footerNav = ['О ресторане', 'Условия доставки', 'Возврат товара']
 
 const Footer = () => {
-  // const location = useLocation();
-
   return (
     <footer className='footer'>
       <div className="footer__inner">

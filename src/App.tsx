@@ -15,13 +15,6 @@ function App() {
         <Route path='promotions' element={<Promotions />} />
       </Route>
     </Routes>
-    // <div className="App">
-    //   <Header />
-    //   <Navigation />
-    //   <Menu items={items} navigationTitles={navigationTitles} />
-    //   <Info />
-    //   <Footer />
-    // </div>
   );
 }
 
