@@ -24,6 +24,7 @@
     }
   }
 }
+
 .promotions__inner-main-item-interior {
   padding: 15px 23px 14px 25px;
   height: 171px;
@@ -47,5 +48,25 @@
     font-size: 14px;
     line-height: 16px;
     color: #6FA076;
+  }
+}
+
+.promotions__inner-main-item-interior-text {
+  height: 80px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+@media(max-width: 786px) {
+  .promotions__inner {
+    margin-top: 40px;
+  }
+  .promotions__inner-title {
+    margin-bottom: 30px;
+  }
+  .promotions__inner-main {
+    padding: 30px 40px 0 40px;
   }
 }
