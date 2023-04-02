@@ -16,12 +16,12 @@ const footerNav = [
   {
     id: 2,
     text: 'Возврат товара',
-    link: '/promotions',
+    link: '/goods-return',
   },
   {
     id: 3,
     text: 'Акции',
-    link: '/goods-return',
+    link: '/promotions',
   },
 ]
 

@@ -8,7 +8,7 @@
     padding: 52px 40px 0 40px;
     &-item {
       width: 440px;
-      height: 351px;
+      max-height: 351px;
       background-color: #494544;
       border-radius: 10px;
       overflow: hidden;
