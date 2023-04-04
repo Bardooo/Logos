@@ -1,7 +1,29 @@
 import arrow from '../assets/img/arrow.svg'
+import { Link } from 'react-router-dom';
 
 const footerLinks = ['Пользовательское соглашение', 'Карта сайта', 'Политика конфиденциальности']
-const footerNav = ['О ресторане', 'Условия доставки', 'Возврат товара', 'Акции']
+const footerNav = [
+  {
+    id: 0,
+    text: 'О ресторане',
+    link: '/about',
+  },
+  {
+    id: 1,
+    text: 'Условия доставки',
+    link: '/delivery-rules',
+  },
+  {
+    id: 2,
+    text: 'Возврат товара',
+    link: '/goods-return',
+  },
+  {
+    id: 3,
+    text: 'Акции',
+    link: '/promotions',
+  },
+]
 
 const Footer = () => {
   return (
@@ -23,7 +45,9 @@ const Footer = () => {
         </div>
         <ul className="footer__inner-nav">
           {footerNav.map((item, index) => (
-            <li key={index} className="footer__inner-nav-item">{item}</li>
+            <Link to={item.link}>
+              <li key={index} className="footer__inner-nav-item">{item.text}</li>
+            </Link>
           ))}
         </ul>
       </div>

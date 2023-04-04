@@ -4,6 +4,7 @@
 @import './components/menu';
 @import './components/card';
 @import './components/info';
+@import './components/promotions';
 
 * {
   padding: 0;
@@ -18,4 +19,8 @@
 
 body {
   background-color: #403C3B;
+}
+
+a {
+  text-decoration: none;
 }

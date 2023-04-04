@@ -1,12 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import geo from '../assets/img/geo.svg'
 import calling from '../assets/img/calling.svg'
 import search from '../assets/img/search.svg'
-import banner from '../assets/img/banner.jpg'
 import cart from '../assets/img/cart.svg'
-import banner2x from '../assets/img/banner@2x.jpg'
-import banner3x from '../assets/img/banner@3x.jpg'
 
 const Header = () => {
   return (
@@ -18,7 +16,9 @@ const Header = () => {
           </div>
           <p className="header__top-menu-text">МЕНЮ</p>
         </div>
-        <h4 className="header__top-logo">LOGOS</h4>
+        <Link to='/'>
+          <h4 className="header__top-logo">LOGOS</h4>
+        </Link>
         <div className="header__top-input">
           <img src={geo} alt="геоточка" className="header__top-input-geo-img" />
           <input placeholder='Введите адрес доставки' type="text" className="header__top-input-enter" />
@@ -46,9 +46,6 @@ const Header = () => {
           <input placeholder='Введите адрес доставки' type="text" className="header__mobile-input-enter" />
           <img src={search} alt="поиск" className="header__mobile-input-search-img" />
         </div>
-      </div>
-      <div className="header__bottom">
-        <img src={banner} srcSet={`${banner2x} 2x, ${banner3x} 3x`} alt="предложение" className="header__bottom-img" />
       </div>
     </section>
   )

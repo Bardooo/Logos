@@ -25,7 +25,7 @@ const Menu: React.FC<MenuProps> = ({items, navigationTitles}) => {
       {navigationTitles.map((item) => (
         <div className="menu__inner" >
           <div className="menu__inner-block">
-            <h1 className="menu__inner-block-title">{item.title}</h1>
+            <h1 className="menu__inner-block-title title">{item.title}</h1>
             <MenuSwiper items={items} />
           </div>
         </div>
