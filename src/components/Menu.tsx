@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuSwiper from './MenuSwiper'
 
-type navigationTitlesType = {
+export type navigationTitlesType = {
   id: number,
   title: string
 }
