@@ -3,6 +3,35 @@ import { itemsType } from '../components/Menu'
 
 import backImg from '../assets/img/back-img.svg'
 import busket from '../assets/img/busket.svg'
+import { Link } from 'react-router-dom'
+
+const info = [
+  {
+    id: 0,
+    title: 'Белки',
+    value: '17.23'
+  },
+  {
+    id: 1,
+    title: 'Жиры',
+    value: '7.63'
+  },
+  {
+    id: 2,
+    title: 'Углеводы',
+    value: '22.35'
+  },
+  {
+    id: 3,
+    title: 'Ккал',
+    value: '234'
+  },
+  {
+    id: 4,
+    title: 'Вес',
+    value: '210 г'
+  }
+]
 
 type ProductCardProps = {
   items: itemsType[],
@@ -13,10 +42,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
     <section className='product-card'>
       <div className="product-card__inner">
         <div className="product-card__inner-main">
-          <div className="product-card__inner-main-back">
-            <img className="product-card__inner-main-back-img" src={backImg} alt="back-img"/>
-            <p className="product-card__inner-main-back-text">Вернуться назад</p>
-          </div>
+          <Link to='/'>
+            <div className="product-card__inner-main-back">
+              <img className="product-card__inner-main-back-img" src={backImg} alt="back-img"/>
+              <p className="product-card__inner-main-back-text">Вернуться назад</p>
+            </div>
+          </Link>
           <div className="product-card__inner-main-item">
             <img className='product-card__inner-main-item-img' src={items[0].imageUrl} alt="product-img" />
             <div className="product-card__inner-main-item-info">
@@ -38,20 +69,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
               </div>
               <div className="product-card__inner-main-item-info-buttom">
                 <div className="product-card__inner-main-item-info-buttom-wrap">
-                  <div className="product-card__inner-main-item-info-buttom-wrap-text">
-                    <p className="product-card__inner-main-item-info-buttom-wrap-text-item">Белки</p>
-                    <p className="product-card__inner-main-item-info-buttom-wrap-text-item">Жиры</p>
-                    <p className="product-card__inner-main-item-info-buttom-wrap-text-item">Углеводы</p>
-                    <p className="product-card__inner-main-item-info-buttom-wrap-text-item">Ккал</p>
-                    <p className="product-card__inner-main-item-info-buttom-wrap-text-item">Вес</p>
-                  </div>
-                </div>
-                <div className="product-card__inner-main-item-info-buttom-numbers">
-                  <p className="product-card__inner-main-item-info-buttom-numbers-item">17.23</p>
-                  <p className="product-card__inner-main-item-info-buttom-numbers-item">7.63</p>
-                  <p className="product-card__inner-main-item-info-buttom-numbers-item">22.35</p>
-                  <p className="product-card__inner-main-item-info-buttom-numbers-item">234</p>
-                  <p className="product-card__inner-main-item-info-buttom-numbers-item">210 г</p>
+                  {info.map((item) => (
+                    <div className="product-card__inner-main-item-info-buttom-wrap-item">
+                      <p className="product-card__inner-main-item-info-buttom-wrap-item-text">{item.title}</p>
+                      <p className="product-card__inner-main-item-info-buttom-wrap-item-number">{item.value}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
