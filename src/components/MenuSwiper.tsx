@@ -48,10 +48,10 @@ const MenuSwiper: React.FC<MenuSwiperProps> = ({items}) => {
       slidesPerView={1}
       breakpoints={breakpoints}
     >
-      {items.map((item: any, index: Number) => (
-        <SwiperSlide>
-          <Link to='/product-card'>
-            <Card key={index} {...item} />
+      {items.map((item, index) => (
+        <SwiperSlide key={index}>
+          <Link to={`/product-card/${item.id}`}>
+            <Card {...item} />
           </Link>
         </SwiperSlide>
       ))}

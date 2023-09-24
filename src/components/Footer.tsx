@@ -45,8 +45,8 @@ const Footer = () => {
         </div>
         <ul className="footer__inner-nav">
           {footerNav.map((item, index) => (
-            <Link to={item.link}>
-              <li key={index} className="footer__inner-nav-item">{item.text}</li>
+            <Link to={item.link} key={index}>
+              <li className="footer__inner-nav-item">{item.text}</li>
             </Link>
           ))}
         </ul>

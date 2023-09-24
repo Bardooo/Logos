@@ -1,43 +1,35 @@
+import { Link, useParams } from 'react-router-dom'
+import React from 'react'
+import axios from 'axios'
+
 import MenuSwiper from '../components/MenuSwiper'
 import { itemsType } from '../components/Menu'
 
 import backImg from '../assets/img/back-img.svg'
 import busket from '../assets/img/busket.svg'
-import { Link } from 'react-router-dom'
 
-const info = [
-  {
-    id: 0,
-    title: 'Белки',
-    value: '17.23'
-  },
-  {
-    id: 1,
-    title: 'Жиры',
-    value: '7.63'
-  },
-  {
-    id: 2,
-    title: 'Углеводы',
-    value: '22.35'
-  },
-  {
-    id: 3,
-    title: 'Ккал',
-    value: '234'
-  },
-  {
-    id: 4,
-    title: 'Вес',
-    value: '210 г'
-  }
-]
+type ProductProps = {
+  items: itemsType[]
+} 
 
-type ProductCardProps = {
-  items: itemsType[],
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
+const Product: React.FC<ProductProps> = ({items}) => {
+  const [item, setItem] = React.useState([])
+  const { id } = useParams()
+  
+  React.useEffect(() => {
+    async function fetchFood() {
+      try {
+        const {data} = await axios.get('https://6403abed3bdc59fa8f2acb30.mockapi.io/items')
+        setItem(data)
+      } catch (error) {
+        alert('Ошибка при получении данных')
+      }
+    }
+    fetchFood()
+  }, [])  
+  console.log(item);
+  
+  
   return (
     <section className='product-card'>
       <div className="product-card__inner">
@@ -49,28 +41,28 @@ const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
             </div>
           </Link>
           <div className="product-card__inner-main-item">
-            <img className='product-card__inner-main-item-img' src={items[0].imageUrl} alt="product-img" />
+            <img className='product-card__inner-main-item-img' src={items[id].imageUrl} alt="product-img" />
             <div className="product-card__inner-main-item-info">
               <div className="product-card__inner-main-item-info-top">
                 <div className="product-card__inner-main-item-info-top-text">
-                  <h5 className="product-card__inner-main-item-info-top-text-title">{items[0].title}</h5>
-                  <p className="product-card__inner-main-item-info-top-text-main-text">помидор, сыр фета, масло подсолнечное, капуста пекинская, перец сладкий красный, огурцы, оливки без косточек</p>
+                  <h5 className="product-card__inner-main-item-info-top-text-title">{items[id].title}</h5>
+                  <p className="product-card__inner-main-item-info-top-text-main-text">{items[id].text}</p>
                 </div>
                 <div className="product-card__inner-main-item-info-top-main">
-                  <p className="product-card__inner-main-item-info-top-main-weight">Вес: 210 г</p>
+                  <p className="product-card__inner-main-item-info-top-main-weight">Вес: {items[id].weight} г</p>
                   <div className="product-card__inner-main-item-info-top-main-cost">
                     <div className="product-card__inner-main-item-info-top-main-cost-btn">
                       <p className="product-card__inner-main-item-info-top-main-cost-btn-text">Корзина</p>
                       <img className="product-card__inner-main-item-info-top-main-cost-btn-img" src={busket} alt="busket" />
                     </div>
-                    <p className="product-card__inner-main-item-info-top-main-cost-text">259 ₽</p>
+                    <p className="product-card__inner-main-item-info-top-main-cost-text">{items[id].price} ₽</p>
                   </div>
                 </div>
               </div>
               <div className="product-card__inner-main-item-info-buttom">
                 <div className="product-card__inner-main-item-info-buttom-wrap">
-                  {info.map((item) => (
-                    <div className="product-card__inner-main-item-info-buttom-wrap-item">
+                  {items[id].info.map((item, index) => (
+                    <div className="product-card__inner-main-item-info-buttom-wrap-item" key={index}>
                       <p className="product-card__inner-main-item-info-buttom-wrap-item-text">{item.title}</p>
                       <p className="product-card__inner-main-item-info-buttom-wrap-item-number">{item.value}</p>
                     </div>
@@ -82,11 +74,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
         </div>
         <div className="product-card__inner-extra">
           <h4 className="product-card__inner-extra-title title">С ЭТИМ ТОВАРОМ ПОКУПАЮТ</h4>
-          <MenuSwiper items={items} />
+          <MenuSwiper items={item} />
         </div>
       </div>
     </section>
   )
 }
 
-export default ProductCard
+export default Product
