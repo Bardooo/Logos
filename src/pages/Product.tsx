@@ -1,33 +1,29 @@
 import { Link, useParams } from 'react-router-dom'
 import React from 'react'
 import axios from 'axios'
-
+import ContentLoader from "react-content-loader"
 import MenuSwiper from '../components/MenuSwiper'
-import { itemsType } from '../components/Menu'
 
 import backImg from '../assets/img/back-img.svg'
-import busket from '../assets/img/busket.svg'
+import ProductCard from '../components/ProductCard'
+import { itemsType } from '../components/Menu'
 
-type ProductProps = {
-  items: itemsType[]
-} 
-
-const Product: React.FC<ProductProps> = ({items}) => {
-  const [item, setItem] = React.useState([])
+const Product = () => {
+  const [items, setItems] = React.useState<itemsType[]>()
   const { id } = useParams()
   
   React.useEffect(() => {
     async function fetchFood() {
       try {
-        const {data} = await axios.get('https://6403abed3bdc59fa8f2acb30.mockapi.io/items')
-        setItem(data)
+        const {data} = await axios.get('https://6403abed3bdc59fa8f2acb30.mockapi.io/items')        
+        setItems(data)
       } catch (error) {
         alert('Ошибка при получении данных')
       }
     }
     fetchFood()
   }, [])  
-  console.log(item);
+  console.log(items);
   
   
   return (
@@ -40,41 +36,27 @@ const Product: React.FC<ProductProps> = ({items}) => {
               <p className="product-card__inner-main-back-text">Вернуться назад</p>
             </div>
           </Link>
-          <div className="product-card__inner-main-item">
-            <img className='product-card__inner-main-item-img' src={items[id].imageUrl} alt="product-img" />
-            <div className="product-card__inner-main-item-info">
-              <div className="product-card__inner-main-item-info-top">
-                <div className="product-card__inner-main-item-info-top-text">
-                  <h5 className="product-card__inner-main-item-info-top-text-title">{items[id].title}</h5>
-                  <p className="product-card__inner-main-item-info-top-text-main-text">{items[id].text}</p>
-                </div>
-                <div className="product-card__inner-main-item-info-top-main">
-                  <p className="product-card__inner-main-item-info-top-main-weight">Вес: {items[id].weight} г</p>
-                  <div className="product-card__inner-main-item-info-top-main-cost">
-                    <div className="product-card__inner-main-item-info-top-main-cost-btn">
-                      <p className="product-card__inner-main-item-info-top-main-cost-btn-text">Корзина</p>
-                      <img className="product-card__inner-main-item-info-top-main-cost-btn-img" src={busket} alt="busket" />
-                    </div>
-                    <p className="product-card__inner-main-item-info-top-main-cost-text">{items[id].price} ₽</p>
-                  </div>
-                </div>
-              </div>
-              <div className="product-card__inner-main-item-info-buttom">
-                <div className="product-card__inner-main-item-info-buttom-wrap">
-                  {items[id].info.map((item, index) => (
-                    <div className="product-card__inner-main-item-info-buttom-wrap-item" key={index}>
-                      <p className="product-card__inner-main-item-info-buttom-wrap-item-text">{item.title}</p>
-                      <p className="product-card__inner-main-item-info-buttom-wrap-item-number">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          {items === undefined ? (
+            <>Получаем данные...</>
+            // <ContentLoader 
+            // speed={2}
+            // width={1300}
+            // height={600}
+            // viewBox="0 0 1281 600"
+            // backgroundColor="#707070"
+            // foregroundColor="#bfbfbf"
+            // >
+            //   <rect x="48" y="8" rx="15" ry="15" width="1200" height="400" />
+            // </ContentLoader>
+          ) : (
+            <ProductCard item={items[id]}/>
+          )}
         </div>
         <div className="product-card__inner-extra">
           <h4 className="product-card__inner-extra-title title">С ЭТИМ ТОВАРОМ ПОКУПАЮТ</h4>
-          <MenuSwiper items={item} />
+          {items === undefined ? (<>Получаем данные...</>) : (
+            <MenuSwiper items={items} />
+          )}
         </div>
       </div>
     </section>
