@@ -1,7 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import React from 'react'
 import axios from 'axios'
-import ContentLoader from "react-content-loader"
 import MenuSwiper from '../components/MenuSwiper'
 
 import backImg from '../assets/img/back-img.svg'
@@ -23,8 +22,6 @@ const Product = () => {
     }
     fetchFood()
   }, [])  
-  console.log(items);
-  
   
   return (
     <section className='product-card'>
@@ -38,16 +35,6 @@ const Product = () => {
           </Link>
           {items === undefined ? (
             <>Получаем данные...</>
-            // <ContentLoader 
-            // speed={2}
-            // width={1300}
-            // height={600}
-            // viewBox="0 0 1281 600"
-            // backgroundColor="#707070"
-            // foregroundColor="#bfbfbf"
-            // >
-            //   <rect x="48" y="8" rx="15" ry="15" width="1200" height="400" />
-            // </ContentLoader>
           ) : (
             <ProductCard item={items[id]}/>
           )}

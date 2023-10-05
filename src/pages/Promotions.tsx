@@ -99,15 +99,15 @@ const Promotions = () => {
   return (
     <section className="promotions">
       <div className="promotions__inner">
-        <h4 className="promotions__inner-title title">АКЦИИ</h4>
-        <div className="promotions__inner-main">
+        <h4 className="promotions__title title">АКЦИИ</h4>
+        <div className="promotions__main">
         {promoItems.map((item, index) => (
-          <div className="promotions__inner-main-item">
-            <img className="promotions__inner-main-item-img" src={item.img} srcSet={`${item.img2x} 2x, ${item.img3x} 3x`} alt={item.title} />
-            <div className="promotions__inner-main-item-interior">
-              <h6 className="promotions__inner-main-item-interior-title">{item.title}</h6>
-              <p className="promotions__inner-main-item-interior-text">{item.text}</p>
-              <p className="promotions__inner-main-item-interior-date">{item.date}</p>
+          <div className="promotions__item">
+            <img className="promotions__img" src={item.img} srcSet={`${item.img2x} 2x, ${item.img3x} 3x`} alt={item.title} />
+            <div className="promotions__interior">
+              <h6 className="promotions__interior-title">{item.title}</h6>
+              <p className="promotions__interior-text">{item.text}</p>
+              <p className="promotions__interior-date">{item.date}</p>
             </div>
           </div>
         ))}

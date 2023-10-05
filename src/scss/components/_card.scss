@@ -1,4 +1,8 @@
 .card {
+  &:hover {
+    filter: drop-shadow(0px 30px 45px rgba(43, 40, 40, 0.6));
+    transition: all 0.3s;
+  }
   &__inner {
     cursor: pointer;
     width: 325px;
@@ -8,27 +12,23 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    &:hover {
-      filter: drop-shadow(0px 30px 45px rgba(43, 40, 40, 0.6));
-      transition: all 0.3s;
-    }
-    &-img {
-      width: 325px;
-      height: 227px;
-      margin-bottom: 15px;
-    }
-    &-main {
-      padding: 0 16px 0 20px;
-      flex-grow: 1;
-    }
-    &-bottom {
-      padding: 0 16px 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
   }
-  &__inner-main-info {
+  &__img {
+    width: 325px;
+    height: 227px;
+    margin-bottom: 15px;
+  }
+  &__main {
+    padding: 0 16px 0 20px;
+    flex-grow: 1;
+  }
+  &__bottom {
+    padding: 0 16px 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,19 +46,19 @@
       color: #FFFFFF;
     }
   }
-  &__inner-main-text {
+  &__text {
     font-weight: 400;
     font-size: 13px;
     line-height: 17px;
     color: #CFCFCF;
   }
-  &__inner-bottom-price {
+  &__price {
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
     color: #FFFFFF;
   }
-  &__inner-bottom-button {
+  &__button {
     display: flex;
     background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
     border-radius: 10px;

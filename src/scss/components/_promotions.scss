@@ -1,49 +1,65 @@
-.promotions__inner {
-  margin-top: 52px;
-  &-main {
+.promotions {
+  &__inner {
+    margin-top: 52px;
+  }
+  &__main {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 52px 40px 0 40px;
-    &-item {
-      width: 440px;
-      max-height: 351px;
-      background-color: #494544;
-      border-radius: 10px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      margin-right: 25px;
-      margin-bottom: 50px;
-      &:hover {
-        filter: drop-shadow(0px 30px 45px rgba(43, 40, 40, 0.6));
-        transition: all 0.5s;
-      }
+  }
+  &__item {
+    width: 440px;
+    max-height: 351px;
+    background-color: #494544;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 25px;
+    margin-bottom: 50px;
+    &:hover {
+      filter: drop-shadow(0px 30px 45px rgba(43, 40, 40, 0.6));
+      transition: all 0.5s;
     }
   }
-}
-
-.promotions__inner-main-item-interior {
-  padding: 15px 23px 14px 25px;
-  height: 171px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  &-title {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FFFFFF;
+    padding-left: 19px;
+    border-left: 4px solid #618967;
+    margin-left: 92px;
+    margin-bottom: 54px;
+  }
+  &__interior {
+    padding: 15px 23px 14px 25px;
+    height: 171px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__interior-title {
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
   }
-  &-text {
+  &__interior-text {
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     color: #A6A7AB;
+    height: 80px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
   }
-  &-date {
+  &__interior-date {
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
@@ -51,22 +67,14 @@
   }
 }
 
-.promotions__inner-main-item-interior-text {
-  height: 80px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-}
-
 @media(max-width: 786px) {
   .promotions__inner {
     margin-top: 40px;
   }
-  .promotions__inner-title {
+  .promotions__title {
     margin-bottom: 30px;
   }
-  .promotions__inner-main {
+  .promotions__main {
     padding: 30px 40px 0 40px;
   }
 }

@@ -3,11 +3,6 @@ import axios from 'axios'
 import Info from '../components/Info'
 import Menu from '../components/Menu';
 
-// type HomeProps = {
-//   items: itemsType[],
-//   navigationTitles: navigationTitlesType[]
-// }
-
 const Home = () => {
   const [items, setItems] = React.useState([]);
   const [navigationTitles, setNavigationTitles] = React.useState([]);
