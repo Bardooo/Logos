@@ -1,0 +1,17 @@
+.error-block {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  &__inner {
+    margin-top: 130px;
+  }
+  &__title {
+    color: white;
+    font-size: 41px;
+    margin-bottom: 30px;
+  }
+  &__text {
+    color: white;
+    font-size: 25px;
+  }
+}

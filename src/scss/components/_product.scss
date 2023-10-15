@@ -20,6 +20,9 @@
       transition: all 0.3s;
     }
   }
+  &__back-mobile {
+    display: none;
+  }
   &__title {
     font-weight: 700;
     font-size: 32px;
@@ -42,5 +45,38 @@
     line-height: 19px;
     color: #FFFFFF;
     margin-top: 3px;
+  }
+}
+
+@media(max-width:650px) {
+  .product {
+    &__title {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .product {
+    &__back {
+      display: none;
+    }
+    &__back-mobile {
+      display: block;
+    }
+    &__mobile-img {
+      position: relative;
+      width: 37px;
+      height: 37px; 
+      border-radius: 100%;
+      padding: 7px 10px;
+      background: #FFFFFF;
+      margin-bottom: -54px;
+      margin-left: 24px;
+    }
+    &__main {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }

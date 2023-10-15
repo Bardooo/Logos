@@ -10,8 +10,6 @@ import Product from './pages/Product';
 import Cart from './pages/Cart';
 
 function App() {
-  // TODO: когда перейдём на редакс, надо перенести запросы и данные в редакс
-
   return (
     <Routes>
       <Route path='/' element={<MainLayout />} >
