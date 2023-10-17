@@ -1,0 +1,234 @@
+.product-card {
+  background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  &__img {
+    max-width: 51%;
+  }
+  &__info {
+    padding: 38px 50px 25px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__top {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+  }
+  &__text {
+    margin-bottom: 113px;
+  }
+  &__main-text {
+    max-width: 411px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #CFCFCF;
+  }
+  &__weight {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    margin-bottom: 22px;
+  }
+  &__cost {
+    max-width: 235px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 7px 13px 7px 24px;
+    width: 149px;
+    height: 52px;
+    border-radius: 10px;
+    background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
+  &__btn-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    height: 38px;
+    padding: 11px 18px 0 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  &__btn-img {
+    margin-right: 6px;
+  }
+  &__cost-text {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+  }
+  &__buttom {
+    height: 40px;
+  }
+  &__wrap {
+    display: flex;
+  }
+  &__item:last-child p {
+    padding-right: 0;
+  }
+  &__item-text {
+    padding-right: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+  }
+  &__item-number {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+  }
+}
+
+@media(max-width:1185px) {
+  .product-card {
+    &__text {
+      margin-bottom: 63px;
+    }
+  }
+}
+
+@media(max-width:1130px) {
+  .product-card {
+    &__text {
+      margin-bottom: 18px;
+    }
+    &__item-text {
+      padding-right: 30px;
+    }
+  }
+}
+
+@media(max-width:1000px) {
+  .product-card {
+    &__info {
+      padding: 38px 50px 25px 18px;
+    }
+    &__top {
+      padding-bottom: 13px;
+    }
+    &__text {
+      margin-bottom: 13px;
+    }
+    &__weight {
+      margin-bottom: 13px;
+    }
+    &__btn {
+      padding: 7px 13px 7px 16px;
+      width: 124px;
+      height: 46px;
+    }
+    &__btn-text {
+      padding: 11px 9px 0 0;
+    }
+  }
+}
+
+@media(max-width:885px) {
+  .product-card {
+    &__info {
+      padding: 18px 0 14px 12px;
+    }
+    &__title {
+      font-size: 18px;
+      line-height: 15px;
+    }
+    &__main-text {
+      font-size: 12px;
+      line-height: 13px;
+    }
+    &__text {
+      margin-bottom: 9px;
+    }
+    &__weight {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    &__btn {
+      padding: 7px 13px 7px 16px;
+      width: 124px;
+      height: 46px;
+    }
+    &__btn-text {
+      padding: 11px 9px 0 0;
+    }
+    &__item-text {
+      padding-right: 20px;
+    }
+  }
+}
+
+@media(max-width:800px) {
+  .product-card {
+    display: block;
+    &__img {
+      min-width: 100%;
+    }
+    &__info {
+      padding: 18px 18px 14px 12px;
+    }
+    &__text {
+      display: grid;
+      justify-content: center;
+    }
+    &__title {
+      text-align: center;
+      line-height: 30px;
+      font-size: 25px;
+    }
+    &__main-text {
+      text-align: center;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    &__weight {
+      text-align: center;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    &__main {
+      display: grid;
+      justify-content: center;
+    }
+    &__btn {
+      margin-right: 18px;
+    }
+    &__wrap {
+      justify-content: center;
+    }
+  }
+}
+@media(max-width:560px) {
+  .product-card {
+    border-radius: 0;
+  }
+}

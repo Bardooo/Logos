@@ -1,0 +1,28 @@
+.cart {
+  &__button {
+    display: flex;
+  }
+  &__button-img {
+    margin-right: 8px;
+  }
+  &__button-text {
+    text-align: center;
+    align-items: center;
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+  }
+  &__title-text {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FFFFFF;
+    padding-left: 19px;
+    border-left: 4px solid #618967;
+    margin-left: 92px;
+  }
+  &__item {
+    display: flex;
+  }
+}

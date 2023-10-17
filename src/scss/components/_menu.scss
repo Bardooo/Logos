@@ -4,25 +4,25 @@
     padding-bottom: 50px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-}
-.title {
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 39px;
-  color: #FFFFFF;
-  padding-left: 19px;
-  border-left: 4px solid #618967;
-  margin-left: 92px;
-  margin-bottom: 54px;
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FFFFFF;
+    padding-left: 19px;
+    border-left: 4px solid #618967;
+    margin-left: 92px;
+    margin-bottom: 54px;
+  }
 }
 
 @media (max-width: 1024px) {
-  .title {
+  .menu__title {
     margin-left: 35px;
   }
 }
 @media (max-width: 785px) {
-  .title {
+  .menu__title {
     margin-left: 15px;
     font-weight: 700;
     font-size: 20px;

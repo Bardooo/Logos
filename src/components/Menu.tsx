@@ -1,7 +1,8 @@
 import React from 'react';
 import MenuSwiper from './MenuSwiper'
+import Navigation from './Navigation';
 
-type navigationTitlesType = {
+export type navigationTitlesType = {
   id: number,
   title: string
 }
@@ -12,6 +13,12 @@ export type itemsType = {
   weight: number,
   text: string,
   price: number
+  info: [
+    {
+      title: string,
+      value: number,
+    }
+  ];
 }
 
 type MenuProps = {
@@ -22,10 +29,11 @@ type MenuProps = {
 const Menu: React.FC<MenuProps> = ({items, navigationTitles}) => {
   return (
     <section className='menu'>
-      {navigationTitles.map((item) => (
-        <div className="menu__inner" >
-          <div className="menu__inner-block">
-            <h1 className="menu__inner-block-title title">{item.title}</h1>
+      <Navigation />
+      {navigationTitles.map((item, index) => (
+        <div className="menu__inner" key={index}>
+          <div className="menu__block">
+            <h1 className="menu__title title">{item.title}</h1>
             <MenuSwiper items={items} />
           </div>
         </div>

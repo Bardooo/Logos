@@ -1,11 +1,9 @@
 import React from 'react'
-import axios from 'axios';
-
-import Menu from '../components/Menu'
+import axios from 'axios'
 import Info from '../components/Info'
+import Menu from '../components/Menu';
 
 const Home = () => {
-  // TODO: когда перейдём на редакс, надо перенести запросы и данные в редакс
   const [items, setItems] = React.useState([]);
   const [navigationTitles, setNavigationTitles] = React.useState([]);
 
@@ -19,7 +17,7 @@ const Home = () => {
         setItems(itemsResponse.data);
         setNavigationTitles(navigationTitlesResponse.data);
       } catch (error) {
-        alert('Ошибка при запросе данных ;(')
+        alert('Ошибка при запросе данных')
         console.error(error)
       }
     }

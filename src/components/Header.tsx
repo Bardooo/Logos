@@ -10,41 +10,39 @@ const Header = () => {
   return (
     <section className="header">
       <div className="header__top">
-        <div className="header__top-menu">
-          <div className="header__top-menu-btn">
-            <span className="header__top-menu-btn-span"></span>
+        <div className="header__menu">
+          <div className="header__btn">
+            <span className="header__span"></span>
           </div>
-          <p className="header__top-menu-text">МЕНЮ</p>
+          <p className="header__text">МЕНЮ</p>
         </div>
-        <Link to='/'>
-          <h4 className="header__top-logo">LOGOS</h4>
-        </Link>
-        <div className="header__top-input">
-          <img src={geo} alt="геоточка" className="header__top-input-geo-img" />
-          <input placeholder='Введите адрес доставки' type="text" className="header__top-input-enter" />
-          <img src={search} alt="поиск" className="header__top-input-search-img" />
+        <h4><Link className="header__logo" to='/'>LOGOS</Link></h4>
+        <div className="header__input">
+          <img className="header__geo-img" src={geo} alt="геоточка" />
+          <input className="header__enter" placeholder='Введите адрес доставки' type="text" />
+          <img className="header__search-img" src={search} alt="поиск" />
         </div>
-        <div className="header__top-contacts">
-          <img src={calling} alt="телефон" className="header__top-contacts-img" />
-          <div className="header__top-contacts-text">
-            <p className="header__top-contacts-text-content">Контакты:</p>
-            <p className="header__top-contacts-text-number">+7 (917) 510-57-59</p>
+        <div className="header__contacts">
+          <img className="header__img" src={calling} alt="телефон" />
+          <div className="header__contacts-text">
+            <p className="header__content">Контакты:</p>
+            <p className="header__number">+7 (917) 510-57-59</p>
           </div>
         </div>
-        <div className="header__top-basket">
-          <p className="header__top-basket-text">Корзина</p>
-          <p className="header__top-basket-number">4</p>
+        <div className="header__basket">
+          <p className="header__basket-text">Корзина</p>
+          <p className="header__basket-number">4</p>
         </div>
-        <div className="header__top-mobile-basket">
-          <img className='header__top-mobile-basket-img' src={cart} alt="cart-img" />
-          <p className="header__top-mobile-basket-text">корзина</p>
+        <div className="header-mobile__basket">
+          <img className='header-mobile__img' src={cart} alt="cart-img" />
+          <p className="header-mobile__text">корзина</p>
         </div>
       </div>
-      <div className="header__mobile">
-        <div className="header__mobile-input">
-          <img src={geo} alt="геоточка" className="header__mobile-input-geo-img" />
-          <input placeholder='Введите адрес доставки' type="text" className="header__mobile-input-enter" />
-          <img src={search} alt="поиск" className="header__mobile-input-search-img" />
+      <div className="header-mobile">
+        <div className="header-mobile__input">
+          <img src={geo} alt="геоточка" className="header-mobile__geo-img" />
+          <input placeholder='Введите адрес доставки' type="text" className="header-mobile__enter" />
+          <img src={search} alt="поиск" className="header-mobile__search-img" />
         </div>
       </div>
     </section>
