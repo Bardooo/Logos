@@ -28,7 +28,6 @@
   &__title-text {
     font-weight: 700;
     font-size: 32px;
-    line-height: 39px;
     color: #FFFFFF;
     padding-left: 19px;
     border-left: 4px solid #618967;
@@ -61,5 +60,38 @@
     justify-content: space-between;
     border-radius: 10px;
     overflow: hidden;
+  }
+}
+
+@media (max-width: 820px) {
+  .cart {
+    &__button {
+      margin-left: 24px;
+    }
+    &__title {
+      margin-bottom: 25px;
+    }
+    &__title-text {
+      margin-left: 24px;
+    }
+    &__add-title {
+      padding-left: 19px;
+      border-left: 4px solid #618967;
+      margin-left: 24px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .cart {
+    &__wrap-items {
+      display: block;
+    }
+    &__title-text {
+      font-size: 20px;
+    }
+    &__add-title {
+      font-size: 20px;
+    }
   }
 }

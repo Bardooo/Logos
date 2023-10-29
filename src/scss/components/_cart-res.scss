@@ -52,3 +52,16 @@
     background: linear-gradient(115deg, #618967 5.11%, #72A479 94%);
   }
 }
+
+@media (max-width: 550px) {
+  .res {
+    &__inner {
+      display: grid;
+      justify-content: center;
+      text-align: center;
+    }
+    &__bottom {
+      margin-bottom: 20px;
+    }
+  }
+}

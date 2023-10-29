@@ -5,6 +5,7 @@
     border-right: none;
   }
   &__img {
+    width: 100%;
     border-radius: 12px;
     margin-bottom: 10px;
   }
@@ -40,5 +41,42 @@
     color: #FFF;
     font-size: 12px;
     font-weight: 700;
+  }
+}
+
+@media (max-width: 760px) {
+  .add-item {
+    padding: 7px 13px 8px 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .add-item {
+    display: flex;
+    &__img {
+      max-width: 149px;
+    }
+    &__main {
+      width: 100%;
+    }
+    &__wrap {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 30px;
+    }
+    &__title {
+      text-align: left;
+      font-size: 24px;
+      margin-left: 30px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .add-item {
+    &__title {
+      font-size: 16px;
+    }
   }
 }
