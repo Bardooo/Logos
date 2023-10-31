@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import arrowImg from '../assets/img/Arrow-left.svg';
 import CartItem from '../components/CartItem';
 import CartAddItem from '../components/CartAddItem';
-import CartRes from '../components/CartRes';
+import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
   return (
@@ -34,7 +34,7 @@ const Cart = () => {
             </div>
           </div>
         </div>
-        <CartRes />
+        <CartTotal />
       </div>
     </section>
   );
