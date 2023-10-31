@@ -46,8 +46,12 @@
 
 @media (max-width: 760px) {
   .add-item {
-    padding: 7px 13px 8px 14px;
-    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+    padding: 26px 13px 15px 14px;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
