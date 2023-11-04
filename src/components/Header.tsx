@@ -29,10 +29,10 @@ const Header = () => {
             <p className="header__number">+7 (917) 510-57-59</p>
           </div>
         </div>
-        <div className="header__basket">
+        <Link className="header__basket" to='/cart'>
           <p className="header__basket-text">Корзина</p>
           <p className="header__basket-number">4</p>
-        </div>
+        </Link>
         <div className="header-mobile__basket">
           <img className='header-mobile__img' src={cart} alt="cart-img" />
           <p className="header-mobile__text">корзина</p>

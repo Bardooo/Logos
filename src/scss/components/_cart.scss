@@ -1,28 +1,105 @@
 .cart {
+  &__inner {
+    margin: 0 auto;
+    max-width: 1096px;
+  }
   &__button {
     display: flex;
+    margin-left: 146px;
+    margin-top: 34px;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
   }
-  &__button-img {
+  &__img {
+    margin-top: 1px;
     margin-right: 8px;
   }
-  &__button-text {
-    text-align: center;
-    align-items: center;
+  &__text {
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 700;
   }
   &__title {
     display: flex;
     align-items: center;
+    margin-bottom: 71px;
   }
   &__title-text {
     font-weight: 700;
     font-size: 32px;
-    line-height: 39px;
     color: #FFFFFF;
     padding-left: 19px;
     border-left: 4px solid #618967;
-    margin-left: 92px;
+    margin-left: 146px;
+    margin-right: 15px;
   }
-  &__item {
+  &__title-span {
+    color: #72A479;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  &__items {
+    border-radius: 10px;    
+    overflow: auto;
+    margin-bottom: 40px;
+  }
+  &__add-title {
+    color: #FFF;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  &__wrap {
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 50px;
+  }
+  &__wrap-items {
+    background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
     display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 820px) {
+  .cart {
+    &__items {
+      margin: 0 24px 40px 24px;
+    }
+    &__button {
+      margin-left: 24px;
+    }
+    &__title {
+      margin-bottom: 25px;
+    }
+    &__title-text {
+      margin-left: 24px;
+    }
+    &__add-title {
+      padding-left: 19px;
+      border-left: 4px solid #618967;
+      margin-left: 24px;
+    }
+    &__wrap {
+      padding: 0 24px 30px 24px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .cart {
+    &__wrap-items {
+      display: block;
+    }
+    &__title-text {
+      font-size: 20px;
+    }
+    &__add-title {
+      font-size: 20px;
+    }
   }
 }
