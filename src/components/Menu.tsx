@@ -7,12 +7,13 @@ export type navigationTitlesType = {
   title: string
 }
 export type itemsType = {
-  id: number,
+  id: string,
   imageUrl: string,
   title: string,
   weight: number,
   text: string,
-  price: number
+  price: number,
+  count: number,
   info: [
     {
       title: string,

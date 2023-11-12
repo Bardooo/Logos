@@ -4,8 +4,12 @@ import arrowImg from '../assets/img/Arrow-left.svg';
 import CartItem from '../components/CartItem';
 import CartAddItem from '../components/CartAddItem';
 import CartTotal from '../components/CartTotal';
+import { useSelector } from 'react-redux';
+import { selectCart } from '../redux/cart/selectors';
 
 const Cart = () => {
+  const { items } = useSelector(selectCart);
+  
   return (
     <section className="cart">
       <div className="cart__inner">
@@ -20,8 +24,9 @@ const Cart = () => {
           <p className="cart__title-span">(в корзине 3 товара)</p>
         </div>
         <div className="cart__items">
-          <CartItem />
-          <CartItem />
+          {items.map((item: any) => (
+            <CartItem key={item.id} {...item} />
+          ))}
         </div>
         <div className="cart__add">
           <h4 className="cart__add-title">ДОБАВИТЬ К ЗАКАЗУ</h4>

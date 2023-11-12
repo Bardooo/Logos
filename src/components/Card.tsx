@@ -1,17 +1,38 @@
 import React from 'react';
 
 import cart from '../assets/img/cart.svg';
+import { useDispatch } from 'react-redux';
+import { CartItem } from '../redux/cart/types';
+import { addItem } from '../redux/cart/slice';
 
-type CardProps = { 
-  id: number,
-  title: string,
-  imageUrl: string,
-  weight: number,
-  text: string,
-  price: number
-}
+type CardProps = {
+  id: string;
+  title: string;
+  imageUrl: string;
+  weight: number;
+  text: string;
+  price: number;
+  count: number;
+  info: [{}];
+};
 
-const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price }) => {
+const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, count, info }) => {
+  const dispatch = useDispatch();
+
+  const onClickAdd = () => {
+    const item: CartItem = {
+      id,
+      title,
+      imageUrl,
+      weight,
+      text,
+      price,
+      count,
+      info,
+    };
+    dispatch(addItem(item));
+  };
+
   return (
     <div className="card">
       <div className="card__inner">
@@ -25,7 +46,7 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price })
         </div>
         <div className="card__bottom">
           <p className="card__price">{price} ₽</p>
-          <div className="card__button">
+          <div className="card__button" onClick={onClickAdd}>
             <p className="card__button-text">В корзину</p>
             <img className="card__button-img" src={cart} alt="cart" />
           </div>

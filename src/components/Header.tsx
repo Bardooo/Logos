@@ -5,8 +5,23 @@ import geo from '../assets/img/geo.svg'
 import calling from '../assets/img/calling.svg'
 import search from '../assets/img/search.svg'
 import cart from '../assets/img/cart.svg'
+import { useSelector } from 'react-redux';
+import { selectCart } from '../redux/cart/selectors';
 
 const Header = () => {
+  const { items } = useSelector(selectCart);
+  const isMounted = React.useRef(false);
+
+  const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+    }
+    isMounted.current = true;
+  }, [items]);
+
   return (
     <section className="header">
       <div className="header__top">
@@ -31,7 +46,7 @@ const Header = () => {
         </div>
         <Link className="header__basket" to='/cart'>
           <p className="header__basket-text">Корзина</p>
-          <p className="header__basket-number">4</p>
+          <p className="header__basket-number">{totalCount}</p>
         </Link>
         <div className="header-mobile__basket">
           <img className='header-mobile__img' src={cart} alt="cart-img" />

@@ -1,8 +1,31 @@
-import React from 'react';
-
 import busket from '../assets/img/busket.svg'
+import { useDispatch } from 'react-redux';
+import { addItem } from '../redux/cart/slice';
 
-const ProductCard = ({ item }) => {
+type ProductCardType = {
+  item: {
+    id: string;
+    title: string;
+    imageUrl: string;
+    weight: number;
+    text: string;
+    price: number;
+    count: number;
+    info: [{
+      id: number,
+      title: string,
+      value: number,
+    }];
+  }
+};
+
+
+const ProductCard: React.FC<ProductCardType> = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const onClickAdd = () => {
+    dispatch(addItem(item));
+  };
   return (
     <div className="product-card">
       <img
@@ -23,8 +46,8 @@ const ProductCard = ({ item }) => {
               Вес: {item.weight} г
             </p>
             <div className="product-card__cost">
-              <div className="product-card__btn">
-                <p className="product-card__btn-text">Корзина</p>
+              <div className="product-card__btn" onClick={onClickAdd}>
+                <p className="product-card__btn-text">В корзину</p>
                 <img
                   className="product-card__btn-img"
                   src={busket}
