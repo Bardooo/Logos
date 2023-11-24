@@ -43,18 +43,13 @@
   &__items {
     border-radius: 10px;    
     overflow: auto;
-    margin-bottom: 40px;
+    margin-bottom: 40px;  
   }
   &__add-title {
     color: #FFF;
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 30px;
-  }
-  &__wrap {
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 50px;
   }
   &__wrap-items {
     background: linear-gradient(90deg, #494544 0%, #504B4A 100%);

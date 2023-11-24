@@ -4,6 +4,7 @@ import cart from '../assets/img/cart.svg';
 import { useDispatch } from 'react-redux';
 import { CartItem } from '../redux/cart/types';
 import { addItem } from '../redux/cart/slice';
+import { Link } from 'react-router-dom';
 
 type CardProps = {
   id: string;
@@ -36,14 +37,16 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
   return (
     <div className="card">
       <div className="card__inner">
-        <img className="card__img" src={imageUrl} alt="food" />
-        <div className="card__main">
-          <div className="card__info">
-            <h5 className="card__info-title">{title}</h5>
-            <p className="card__info-text">Вес: {weight}г</p>
+        <Link to={`/product-card/${id}`}>
+          <img className="card__img" src={imageUrl} alt="food" />
+          <div className="card__main">
+            <div className="card__info">
+              <h5 className="card__info-title">{title}</h5>
+              <p className="card__info-text">Вес: {weight}г</p>
+            </div>
+            <p className="card__text">{text}</p>
           </div>
-          <p className="card__text">{text}</p>
-        </div>
+        </Link>
         <div className="card__bottom">
           <p className="card__price">{price} ₽</p>
           <div className="card__button" onClick={onClickAdd}>

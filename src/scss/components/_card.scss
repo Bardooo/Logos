@@ -11,6 +11,7 @@
     border-radius: 10px;
     overflow: hidden;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
   }
   &__img {
