@@ -8,11 +8,22 @@ import cart from '../assets/img/cart.svg'
 import { useSelector } from 'react-redux';
 import { selectCart } from '../redux/cart/selectors';
 
+
+type ItemType = {
+  id: string;
+  title: string;
+  imageUrl: string;
+  weight: number;
+  text: string;
+  price: number;
+  count: number;
+}
+
 const Header = () => {
   const { items } = useSelector(selectCart);
   const isMounted = React.useRef(false);
 
-  const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
+  const totalCount = items.reduce((sum: number, item: ItemType) => sum + item.count, 0);
 
   React.useEffect(() => {
     if (isMounted.current) {

@@ -45,13 +45,9 @@ export const CartItem: React.FC<CartItemProps> = ({id, title, imageUrl, text, pr
       </div>
         <div className="cart-item__right">
           <div className="cart-item__quantity">
-            {
-              count === 1 ? (
-                <img className="cart-item__quantity-img" src={minusImg} alt="cart-arrow-left" />
-              ) : (
-                <img className="cart-item__quantity-img" src={minusImg} alt="cart-arrow-left" onClick={onClickMinus} />
-              )
-            }
+            <button className="cart-item__quantity-btn" onClick={onClickMinus} disabled={count === 1 && true}>
+              <img className="cart-item__quantity-img" src={minusImg} alt="cart-arrow-left"/>
+            </button>
             <p className="cart-item__quantity-counter">{count}</p>
             <img className="cart-item__quantity-img" src={plusImg} alt="cart-arrow-right" onClick={onClickPlus} />
           </div>

@@ -49,6 +49,18 @@
     font-size: 20px;
     font-weight: 700;
   }
+  &__quantity-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+  }
+  &__quantity-btn:disabled {
+    img {
+      opacity: 0.5;
+      cursor: default;
+    }
+  }
   &__quantity-img {
     cursor: pointer;
     width: 20px;
