@@ -73,4 +73,29 @@
       color: #FFFFFF;
     }
   }
+  &__quantity {
+    display: flex;
+    align-items: center;
+  }
+  &__quantity-counter {
+    margin-left: 13px;
+    margin-right: 13px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  &__quantity-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+  }
+  &__quantity-img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    background-color: #72A479;
+    border-radius: 100%;
+  }
 }

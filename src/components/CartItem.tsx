@@ -5,25 +5,12 @@ import plusImg from '../assets/img/plus.svg';
 import minusImg from '../assets/img/minus.svg';
 import deleteImg from '../assets/img/delete.svg';
 
-type CartItemProps = {
-  id: string;
-  title: string;
-  imageUrl: string;
-  weight: number;
-  text: string;
-  price: number;
-  count: number;
-  info: [{}];
-};
-
-export const CartItem: React.FC<CartItemProps> = ({id, title, imageUrl, text, price, count}) => {
+export const CartItem: React.FC<CartItemType> = ({id, title, imageUrl, text, price, weight, count, info}) => {
   const dispatch = useDispatch();
 
   const onClickPlus = () => {
     dispatch(
-      addItem({
-        id,
-      } as CartItemType),
+      addItem({id, title, imageUrl, text, price, weight, count, info})
     );
   };
 
@@ -49,7 +36,9 @@ export const CartItem: React.FC<CartItemProps> = ({id, title, imageUrl, text, pr
               <img className="cart-item__quantity-img" src={minusImg} alt="cart-arrow-left"/>
             </button>
             <p className="cart-item__quantity-counter">{count}</p>
-            <img className="cart-item__quantity-img" src={plusImg} alt="cart-arrow-right" onClick={onClickPlus} />
+            <button className='cart-item__quantity-btn'>
+              <img className="cart-item__quantity-img" src={plusImg} alt="cart-arrow-right" onClick={onClickPlus} />
+            </button>
           </div>
           <div className="cart-item__wrap">
             <p className="cart-item__price">{price} ₽</p>

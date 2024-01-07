@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { selectCart } from '../redux/cart/selectors';
 
 
-type ItemType = {
+export type ItemType = {
   id: string;
   title: string;
   imageUrl: string;
@@ -17,6 +17,7 @@ type ItemType = {
   text: string;
   price: number;
   count: number;
+  info: [{}]
 }
 
 const Header = () => {

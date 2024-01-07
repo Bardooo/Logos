@@ -5,10 +5,13 @@ import CartItem from '../components/CartItem';
 import CartTotal from '../components/CartTotal';
 import { useSelector } from 'react-redux';
 import { selectCart } from '../redux/cart/selectors';
+import { ItemType } from '../components/Header'
 
 const Cart = () => {
   const { items } = useSelector(selectCart);
-  
+
+  const totalCount = items.reduce((sum: number, item: ItemType) => sum + item.count, 0);
+
   return (
     <section className="cart">
       <div className="cart__inner">
@@ -20,10 +23,10 @@ const Cart = () => {
         </Link>
         <div className="cart__title">
           <p className="cart__title-text">КОРЗИНА</p>
-          <p className="cart__title-span">(в корзине 3 товара)</p>
+          <p className="cart__title-span">(в корзине {totalCount} товара)</p>
         </div>
         <div className="cart__items">
-          {items.map((item: any) => (
+          {items.map((item: ItemType) => (
             <CartItem key={item.id} {...item} />
           ))}
         </div>

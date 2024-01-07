@@ -2,9 +2,14 @@ import React from 'react';
 
 import cart from '../assets/img/cart.svg';
 import { useDispatch } from 'react-redux';
-import { CartItem } from '../redux/cart/types';
-import { addItem } from '../redux/cart/slice';
+import { addItem, minusItem } from '../redux/cart/slice';
 import { Link } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+import { selectCart } from '../redux/cart/selectors';
+
+import plusImg from '../assets/img/plus.svg';
+import minusImg from '../assets/img/minus.svg';
 
 type CardProps = {
   id: string;
@@ -20,18 +25,26 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, count, info }) => {
   const dispatch = useDispatch();
 
+  const onClickMinus = () => {
+    dispatch(minusItem(id));
+  };
+  const { itemCount } = useSelector(selectCart);
+
+  console.log(itemCount);
+
   const onClickAdd = () => {
-    const item: CartItem = {
-      id,
-      title,
-      imageUrl,
-      weight,
-      text,
-      price,
-      count,
-      info,
-    };
-    dispatch(addItem(item));
+    dispatch(
+      addItem({
+        id,
+        title,
+        imageUrl,
+        weight,
+        text,
+        price,
+        count,
+        info,
+      }),
+    );
   };
 
   return (
@@ -49,10 +62,27 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
         </Link>
         <div className="card__bottom">
           <p className="card__price">{price} ₽</p>
-          <div className="card__button" onClick={onClickAdd}>
-            <p className="card__button-text">В корзину</p>
-            <img className="card__button-img" src={cart} alt="cart" />
-          </div>
+          {itemCount === 0 ? (
+            <div className="card__button" onClick={onClickAdd}>
+              <p className="card__button-text">В корзину</p>
+              <img className="card__button-img" src={cart} alt="cart" />
+            </div>
+          ) : (
+            <div className="card__quantity">
+              <button className="card__quantity-btn" onClick={onClickMinus}>
+                <img className="card__quantity-img" src={minusImg} alt="cart-arrow-left" />
+              </button>
+              <p className="card__quantity-counter">{itemCount}</p>
+              <button className="card__quantity-btn">
+                <img
+                  className="card__quantity-img"
+                  src={plusImg}
+                  alt="cart-arrow-right"
+                  onClick={onClickAdd}
+                />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
