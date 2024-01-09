@@ -24,9 +24,12 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, count, info }) => {
   const dispatch = useDispatch();
-
   const { items } = useSelector(selectCart);
-
+  
+  const [totalCount] = React.useState(() => {
+    return items.find((item) => item.title === title)?.count || 0;
+  })
+  
   const onClickRemove = () => {
     dispatch(removeItem(id))
   }
@@ -47,16 +50,8 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
         count,
         info,
       }),
-    );
-  };
-
-  let totalCount = 0;
-
-  items.forEach(el => {
-    if (title === el.title) {
-      totalCount = el.count
-    }
-  })
+      );
+    };
 
   return (
     <div className="card">
