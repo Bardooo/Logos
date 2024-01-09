@@ -28,6 +28,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: default;
   }
   &__info {
     display: flex;
@@ -60,6 +61,7 @@
     color: #FFFFFF;
   }
   &__button {
+    cursor: pointer;
     display: flex;
     background: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
     border-radius: 10px;
@@ -73,9 +75,14 @@
       color: #FFFFFF;
     }
   }
+  &__button:hover {
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
   &__quantity {
     display: flex;
     align-items: center;
+    height: 44px;
   }
   &__quantity-counter {
     margin-left: 13px;
@@ -89,6 +96,10 @@
     align-items: center;
     border: none;
     background-color: transparent;
+  }
+  &__quantity-btn:hover {
+    opacity: 0.5;
+    transition: opacity 0.3s;
   }
   &__quantity-img {
     cursor: pointer;

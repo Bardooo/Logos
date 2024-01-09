@@ -2,7 +2,7 @@ import React from 'react';
 
 import cart from '../assets/img/cart.svg';
 import { useDispatch } from 'react-redux';
-import { addItem, minusItem } from '../redux/cart/slice';
+import { addItem, minusItem, removeItem } from '../redux/cart/slice';
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
@@ -25,12 +25,15 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, count, info }) => {
   const dispatch = useDispatch();
 
+  const { items } = useSelector(selectCart);
+
+  const onClickRemove = () => {
+    dispatch(removeItem(id))
+  }
+
   const onClickMinus = () => {
     dispatch(minusItem(id));
   };
-  const { itemCount } = useSelector(selectCart);
-
-  console.log(itemCount);
 
   const onClickAdd = () => {
     dispatch(
@@ -47,6 +50,14 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
     );
   };
 
+  let totalCount = 0;
+
+  items.forEach(el => {
+    if (title === el.title) {
+      totalCount = el.count
+    }
+  })
+
   return (
     <div className="card">
       <div className="card__inner">
@@ -62,27 +73,35 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
         </Link>
         <div className="card__bottom">
           <p className="card__price">{price} ₽</p>
-          {itemCount === 0 ? (
-            <div className="card__button" onClick={onClickAdd}>
-              <p className="card__button-text">В корзину</p>
-              <img className="card__button-img" src={cart} alt="cart" />
-            </div>
-          ) : (
-            <div className="card__quantity">
-              <button className="card__quantity-btn" onClick={onClickMinus}>
-                <img className="card__quantity-img" src={minusImg} alt="cart-arrow-left" />
-              </button>
-              <p className="card__quantity-counter">{itemCount}</p>
-              <button className="card__quantity-btn">
-                <img
-                  className="card__quantity-img"
-                  src={plusImg}
-                  alt="cart-arrow-right"
-                  onClick={onClickAdd}
-                />
-              </button>
-            </div>
-          )}
+          {
+            totalCount === 0 ? (
+              <div className="card__button" onClick={onClickAdd}>
+                <p className="card__button-text">В корзину</p>
+                <img className="card__button-img" src={cart} alt="cart" />
+              </div>
+            ) : (
+              <div className="card__quantity">
+                {totalCount === 1 ? (
+                  <button className="card__quantity-btn" onClick={onClickRemove}>
+                    <img className="card__quantity-img" src={minusImg} alt="cart-arrow-left" />
+                  </button>
+                ) : (
+                  <button className="card__quantity-btn" onClick={onClickMinus}>
+                    <img className="card__quantity-img" src={minusImg} alt="cart-arrow-left" />
+                  </button>
+                )}
+                <p className="card__quantity-counter">{totalCount}</p>
+                <button className="card__quantity-btn">
+                  <img
+                    className="card__quantity-img"
+                    src={plusImg}
+                    alt="cart-arrow-right"
+                    onClick={onClickAdd}
+                  />
+                </button>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>

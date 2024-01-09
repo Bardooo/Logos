@@ -1,8 +1,14 @@
 import React from 'react'
 
 const Navigation = () => {
-  //есть класс active
-  const arr = [
+  const onClickLi = (e) => {
+    const elements = document.querySelectorAll('.navigation__text')
+    elements.forEach(el => {
+      el.classList.remove('active')
+    })
+    e.target.classList.add('active')
+  }
+  let arr = [
     "Холодные закуски",
     "Горячие закуски",
     "Мясные блюда",
@@ -12,12 +18,13 @@ const Navigation = () => {
     "Фирменные блюда",
     "Напитки",
   ]
+  let i = 0
   return (
     <section className='navigation'>
       <div className="navigation__inner">
         <ul className="navigation__list">
           {arr.map((item, index)=> (
-            <li key={index} className="navigation__text">{item}</li>
+            <li key={index} id={String(i++)} className="navigation__text" onClick={(e) => {onClickLi(e)}}>{item}</li>
           ))}
         </ul>
       </div>
