@@ -30,13 +30,12 @@ type ProductCardType = {
 
 const ProductCard: React.FC<ProductCardType> = ({ item }) => {
   const dispatch = useDispatch();
-  const { items } = useSelector(selectCart);
-  
-  const [totalCount, setTotalCount] = React.useState(0)
+  const {totalCount} = useSelector(selectCart);
+  const setCount = totalCount.get(item.title) ? totalCount.get(item.title) : 0
+
   
   const onClickRemove = () => {
     dispatch(removeItem(item.id))
-    setTotalCount(0);
   }
 
   const onClickMinus = () => {
@@ -46,11 +45,6 @@ const ProductCard: React.FC<ProductCardType> = ({ item }) => {
   const onClickAdd = () => {
     dispatch(addItem(item));
   };
-
-  React.useEffect(() => {
-    const count = items.find((el) => el.title === item.title)?.count || 0;
-    setTotalCount(count)
-  }, [])
 
   return (
     <div className="product-card">
@@ -64,14 +58,14 @@ const ProductCard: React.FC<ProductCardType> = ({ item }) => {
           <div className="product-card__main">
             <p className="product-card__weight">Вес: {item.weight} г</p>
             <div className="product-card__cost">
-              {totalCount === 0 ? (
+              {setCount === 0 ? (
                 <div className="product-card__btn" onClick={onClickAdd}>
                   <p className="product-card__btn-text">В корзину</p>
                   <img className="product-card__btn-img" src={busket} alt="busket" />
                 </div>
               ) : (
                 <div className="product-card__quantity">
-                  {totalCount === 1 ? (
+                  {setCount === 1 ? (
                     <button className="product-card__quantity-btn" onClick={onClickRemove}>
                       <img className="product-card__quantity-img" src={minusImg} alt="cart-arrow-left" />
                     </button>
@@ -80,7 +74,7 @@ const ProductCard: React.FC<ProductCardType> = ({ item }) => {
                       <img className="product-card__quantity-img" src={minusImg} alt="cart-arrow-left" />
                     </button>
                   )}
-                  <p className="product-card__quantity-counter">{totalCount}</p>
+                  <p className="product-card__quantity-counter">{setCount}</p>
                   <button className="product-card__quantity-btn">
                     <img
                       className="product-card__quantity-img"
