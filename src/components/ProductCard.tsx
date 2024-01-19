@@ -48,12 +48,9 @@ const ProductCard: React.FC<ProductCardType> = ({ item }) => {
   };
 
   React.useEffect(() => {
-    items.forEach(el => {
-      if (item.title === el.title) {
-        setTotalCount(el.count)
-      }
-    })
-  })
+    const count = items.find((el) => el.title === item.title)?.count || 0;
+    setTotalCount(count)
+  }, [])
 
   return (
     <div className="product-card">

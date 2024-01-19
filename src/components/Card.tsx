@@ -1,5 +1,3 @@
-import React from 'react';
-
 import cart from '../assets/img/cart.svg';
 import { useDispatch } from 'react-redux';
 import { addItem, minusItem, removeItem } from '../redux/cart/slice';
@@ -10,6 +8,7 @@ import { selectCart } from '../redux/cart/selectors';
 
 import plusImg from '../assets/img/plus.svg';
 import minusImg from '../assets/img/minus.svg';
+import React from 'react';
 
 type CardProps = {
   id: string;
@@ -24,11 +23,8 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, count, info }) => {
   const dispatch = useDispatch();
-  const { items } = useSelector(selectCart);
-  
-  const [totalCount] = React.useState(() => {
-    return items.find((item) => item.title === title)?.count || 0;
-  })
+  const {totalCount} = useSelector(selectCart);
+  const setCount = totalCount.get(title) ? totalCount.get(title) : 0
   
   const onClickRemove = () => {
     dispatch(removeItem(id))
@@ -69,14 +65,14 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
         <div className="card__bottom">
           <p className="card__price">{price} ₽</p>
           {
-            totalCount === 0 ? (
+            setCount === 0 ? (
               <div className="card__button" onClick={onClickAdd}>
                 <p className="card__button-text">В корзину</p>
                 <img className="card__button-img" src={cart} alt="cart" />
               </div>
             ) : (
               <div className="card__quantity">
-                {totalCount === 1 ? (
+                {setCount === 1 ? (
                   <button className="card__quantity-btn" onClick={onClickRemove}>
                     <img className="card__quantity-img" src={minusImg} alt="cart-arrow-left" />
                   </button>
@@ -85,7 +81,7 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
                     <img className="card__quantity-img" src={minusImg} alt="cart-arrow-left" />
                   </button>
                 )}
-                <p className="card__quantity-counter">{totalCount}</p>
+                <p className="card__quantity-counter">{setCount}</p>
                 <button className="card__quantity-btn">
                   <img
                     className="card__quantity-img"
