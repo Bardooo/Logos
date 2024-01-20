@@ -6,22 +6,7 @@ import Menu from '../components/Menu';
 const Home = () => {
   const [items, setItems] = React.useState([]);
   const [navigationTitles, setNavigationTitles] = React.useState([]);
-  // const [totalCount, setTotalCount] = React.useState({})
 
-  // let set = {}
-  // console.log(set);
-  
-
-  // let totalCount = new Set();
-  // totalCount.add(13)
-  // totalCount.add(2)
-  // console.log(totalCount);
-  // console.log(totalCount);
-
-  // const addToTotalCount = (item) => {
-  //   totalCount = {...totalCount, ...item}
-  // }
-  
   React.useEffect(() => {
     async function fetchData() {
       try {
@@ -38,17 +23,7 @@ const Home = () => {
     }
     fetchData();
   }, []);
-  // console.log(items);
-  
-  // for (const item of items) {
-  //   console.log(item);
-    
-  //   set = {...set, ...{title: item.title, count: item.count}}
-  // }
-  // items.map((item) => {
-  //   setTotalCount({...totalCount, ...{title: item.title, count: item.count}})
-  // })  
-  // console.log(set);
+
   return (
     <>
       <Menu items={items} navigationTitles={navigationTitles} />
