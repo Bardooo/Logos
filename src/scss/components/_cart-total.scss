@@ -2,6 +2,9 @@
   display: flex;
   justify-content: center;
   margin-bottom: 89px;
+  padding-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 50px;
   &__inner {
     padding: 20px 27px 11px 39px;
     display: flex;
@@ -24,7 +27,6 @@
   }
   &__middle {
     color: #FFF;
-    text-align: center;
     font-size: 12px;
     font-weight: 500;
     margin-bottom: 11px;

@@ -4,7 +4,6 @@ import Card from '../components/Card'
 import {itemsType} from './Menu'
 
 import 'swiper/css';
-import { Link } from 'react-router-dom';
 
 const breakpoints = {
   320: {
@@ -50,9 +49,7 @@ const MenuSwiper: React.FC<MenuSwiperProps> = ({items}) => {
     >
       {items.map((item, index) => (
         <SwiperSlide key={index}>
-          <Link to={`/product-card/${item.id}`}>
-            <Card {...item} />
-          </Link>
+          <Card {...item} />
         </SwiperSlide>
       ))}
     </Swiper>

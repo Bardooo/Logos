@@ -1,10 +1,11 @@
 export type Food = {
-  id: number,
+  id: string,
   imageUrl: string,
   title: string,
   weight: number,
   text: string,
   price: number,
+  count: number,
   info: [
     {
       id: number,

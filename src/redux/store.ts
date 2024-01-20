@@ -1,10 +1,12 @@
-import {configureStore} from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux';
 import food from './food/slice'
+import cart from './cart/slice'
 
 export const store = configureStore({
   reducer: {
     food,
+    cart,
   }
 })
 

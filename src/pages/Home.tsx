@@ -17,13 +17,13 @@ const Home = () => {
         setItems(itemsResponse.data);
         setNavigationTitles(navigationTitlesResponse.data);
       } catch (error) {
-        alert('Ошибка при запросе данных')
-        console.error(error)
+          alert('Ошибка при запросе данных')
+          console.error(error)
       }
     }
-
     fetchData();
   }, []);
+
   return (
     <>
       <Menu items={items} navigationTitles={navigationTitles} />
