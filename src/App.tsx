@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Promotions from './pages/Promotions';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
+import Order from './pages/Order';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         />
         <Route path='promotions' element={<Promotions />} />
         <Route path='product-card/:id' element={<Product />} />
+        <Route path='order' element={<Order />} /> 
       </Route>
     </Routes>
   );

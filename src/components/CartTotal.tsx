@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCart } from '../redux/cart/selectors';
+import { Link } from 'react-router-dom';
 
 const CartTotal = () => {
   const {totalPrice} = useSelector(selectCart);
@@ -18,7 +19,9 @@ const CartTotal = () => {
           )}
           <p className="cart-total__bottom">Минимальная сума заказа 1500 ₽</p>
         </div>
-        <div className="cart-total__btn">Оформить заказ</div>
+        <Link to="/order">
+          <div className="cart-total__btn">Оформить заказ</div>
+        </Link>
       </div>
     </div>
   );
