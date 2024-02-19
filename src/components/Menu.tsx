@@ -26,12 +26,22 @@ export type itemsType = {
   ];
 }
 
+let navigationTitles = [
+  "Холодные закуски",
+  "Горячие закуски",
+  "Мясные блюда",
+  "Супы",
+  "Рыбные блюда",
+  "Гриль меню",
+  "Фирменные блюда",
+  "Напитки",
+]
+
 type MenuProps = {
   items: itemsType[],
-  navigationTitles: navigationTitlesType[]
 }
 
-const Menu: React.FC<MenuProps> = ({items, navigationTitles}) => {
+const Menu: React.FC<MenuProps> = ({items}) => {
   return (
     <section className='menu'>
       <img src={banner} srcSet={`${banner2x} 2x, ${banner3x} 3x`} alt="предложение" className="header-bottom-img" />
@@ -39,7 +49,7 @@ const Menu: React.FC<MenuProps> = ({items, navigationTitles}) => {
       {navigationTitles.map((item, index) => (
         <div className="menu__inner" key={index}>
           <div className="menu__block">
-            <h1 className="menu__title title">{item.title}</h1>
+            <h1 className="menu__title title">{item}</h1>
             <MenuSwiper items={items} />
           </div>
         </div>
