@@ -19,12 +19,9 @@ interface OrderForm {
 
 const Order = () => {
   const [active, setActive] = React.useState('1');
-  const {
-    register,
-    handleSubmit,
-  } = useForm<OrderForm>({});
+  const { register, handleSubmit } = useForm<OrderForm>({});
 
-  const sendData = (data = {}) => {
+  const sendData = (data: OrderForm) => {
     return fetch('https://6403abed3bdc59fa8f2acb30.mockapi.io/formData', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -34,29 +31,29 @@ const Order = () => {
     }).then((response) => response.json());
   };
 
-  const submit: SubmitHandler<OrderForm> = (data) => {
-    sendData(data)
+  const submit: SubmitHandler<OrderForm> = (data: OrderForm) => {
+    sendData(data);
   };
 
   const error: SubmitErrorHandler<OrderForm> = (data) => {
     console.log(data);
   };
 
-  const nameVal = (el) => {
-    el.target.value = el.target.value.replace(/[^а-яА-ЯёЁa-zA-Z ]/g, '');
+  const setName = (el: React.FormEvent<HTMLInputElement>) => {
+    el.currentTarget.value = el.currentTarget.value.replace(/[^а-яА-ЯёЁa-zA-Z ]/g, '');
   };
 
-  const numVal = (el) => {
-    el.target.value = el.target.value.replace(/[^\d+]/, '');
+  const setNum = (el: React.FormEvent<HTMLInputElement>) => {
+    el.currentTarget.value = el.currentTarget.value.replace(/[^\d+]/, '');
   };
 
-  const onClickLi = (e) => {
+  const onClickLi = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const elements = document.querySelectorAll('.order__delivery-li');
     elements.forEach((el) => {
       el.classList.remove('active');
     });
-    e.target.classList.add('active');
-    setActive(e.target.id);
+    e.currentTarget.classList.add('active');
+    setActive(e.currentTarget.id);
   };
 
   return (
@@ -78,7 +75,7 @@ const Order = () => {
                 type="text"
                 required
                 onInput={(el) => {
-                  nameVal(el);
+                  setName(el);
                 }}
               />
               <div className="order__contacts-text">
@@ -91,7 +88,7 @@ const Order = () => {
                 type="tel"
                 required
                 onInput={(el) => {
-                  numVal(el);
+                  setNum(el);
                 }}
               />
               <div className="order__contacts-text">
@@ -137,7 +134,7 @@ const Order = () => {
                   type="tel"
                   required
                   onInput={(el) => {
-                    numVal(el);
+                    setNum(el);
                   }}
                   placeholder="Номер дома*"
                 />
@@ -147,7 +144,7 @@ const Order = () => {
                   type="tel"
                   required
                   onInput={(el) => {
-                    numVal(el);
+                    setNum(el);
                   }}
                   placeholder="№ квартиры/офиса"
                 />
@@ -157,7 +154,7 @@ const Order = () => {
                   type="tel"
                   required
                   onInput={(el) => {
-                    numVal(el);
+                    setNum(el);
                   }}
                   placeholder="Подъезд"
                 />
@@ -167,7 +164,7 @@ const Order = () => {
                   type="tel"
                   required
                   onInput={(el) => {
-                    numVal(el);
+                    setNum(el);
                   }}
                   placeholder="Этаж"
                 />
@@ -204,7 +201,6 @@ const Order = () => {
             <span className="order__checkout-span">Условиями</span>
           </p>
           <button className="order__checkout-btn">Оформить заказ</button>
-          {/* <input className="order__checkout-btn" type="submit" value="Оформить заказ" /> */}
         </div>
       </form>
     </section>

@@ -26,7 +26,7 @@ export type itemsType = {
   ];
 }
 
-let navigationTitles = [
+const navigationTitles = [
   "Холодные закуски",
   "Горячие закуски",
   "Мясные блюда",
