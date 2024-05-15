@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { formatPhoneAndMask } from '@artmizu/utils';
+
 import { Link } from 'react-router-dom';
 
 import arrowImg from '../assets/img/Arrow-left.svg';
 import time from '../assets/img/time.svg';
-import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitErrorHandler, FieldErrors, SubmitHandler, useForm } from 'react-hook-form';
 
 interface OrderForm {
   name: string;
@@ -19,7 +21,11 @@ interface OrderForm {
 
 const Order = () => {
   const [active, setActive] = React.useState('1');
-  const { register, handleSubmit } = useForm<OrderForm>({});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<OrderForm>({});
 
   const sendData = (data: OrderForm) => {
     return fetch('https://6403abed3bdc59fa8f2acb30.mockapi.io/formData', {
@@ -35,8 +41,8 @@ const Order = () => {
     sendData(data);
   };
 
-  const error: SubmitErrorHandler<OrderForm> = (data) => {
-    console.log(data);
+  const error: SubmitErrorHandler<OrderForm> = (errors: FieldErrors<OrderForm>) => {
+    console.log(errors);
   };
 
   const setName = (el: React.FormEvent<HTMLInputElement>) => {
@@ -71,29 +77,33 @@ const Order = () => {
           <div className="order__contacts-inputs">
             <label className="order__contacts-name">
               <input
-                {...register('name')}
+                id="name"
+                className="order__contacts-text"
+                {...register('name', { required: 'Это поле не может быть пустым' })}
                 type="text"
-                required
+                placeholder="Имя*"
                 onInput={(el) => {
                   setName(el);
                 }}
               />
-              <div className="order__contacts-text">
-                Имя<span className="order__contacts-span">*</span>
-              </div>
+              {errors.name && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.name.message}</p>
+              )}
             </label>
             <label className="order__contacts-phone">
               <input
-                {...register('phoneNum')}
+                id="phoneNum"
+                className="order__contacts-text"
+                {...register('phoneNum', { required: 'Это поле не может быть пустым' })}
                 type="tel"
-                required
-                onInput={(el) => {
-                  setNum(el);
+                onChange={(val) => {
+                  val.target.value = formatPhoneAndMask(val.target.value);
                 }}
+                placeholder="Телефон*"
               />
-              <div className="order__contacts-text">
-                Телефон<span className="order__contacts-span">*</span>
-              </div>
+              {errors.name && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.name.message}</p>
+              )}
             </label>
           </div>
         </div>
@@ -121,60 +131,90 @@ const Order = () => {
             <>
               <h5 className="order__delivery-subtitle">Адрес доставки</h5>
               <div className="order__delivery-address">
-                <input
-                  className="order__delivery-street"
-                  {...register('sreet')}
-                  type="text"
-                  required
-                  placeholder="Укажите улицу*"
-                />
-                <input
-                  className="order__delivery-building"
-                  {...register('houseNum')}
-                  type="tel"
-                  required
-                  onInput={(el) => {
-                    setNum(el);
-                  }}
-                  placeholder="Номер дома*"
-                />
-                <input
-                  className="order__delivery-number"
-                  {...register('apartNum')}
-                  type="tel"
-                  required
-                  onInput={(el) => {
-                    setNum(el);
-                  }}
-                  placeholder="№ квартиры/офиса"
-                />
-                <input
-                  className="order__delivery-entrance"
-                  {...register('entranceNum')}
-                  type="tel"
-                  required
-                  onInput={(el) => {
-                    setNum(el);
-                  }}
-                  placeholder="Подъезд"
-                />
-                <input
-                  className="order__delivery-level"
-                  {...register('level')}
-                  type="tel"
-                  required
-                  onInput={(el) => {
-                    setNum(el);
-                  }}
-                  placeholder="Этаж"
-                />
-                <input
-                  className="order__delivery-comment"
-                  {...register('comment')}
-                  type="text"
-                  required
-                  placeholder="Комментарий"
-                />
+                <div>
+                  <input
+                    id="sreet"
+                    {...register('sreet', { required: 'Это поле не может быть пустым' })}
+                    className="order__delivery-street"
+                    type="text"
+                    placeholder="Укажите улицу*"
+                  />
+                  {errors.name && (
+                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    id="houseNum"
+                    {...register('houseNum', { required: 'Это поле не может быть пустым' })}
+                    className="order__delivery-building"
+                    type="tel"
+                    onInput={(el) => {
+                      setNum(el);
+                    }}
+                    placeholder="Номер дома*"
+                  />
+                  {errors.name && (
+                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    id="apartNum"
+                    {...register('apartNum', { required: 'Это поле не может быть пустым' })}
+                    className="order__delivery-number"
+                    type="tel"
+                    onInput={(el) => {
+                      setNum(el);
+                    }}
+                    placeholder="№ квартиры/офиса"
+                  />
+                  {errors.name && (
+                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    id="entranceNum"
+                    {...register('entranceNum', { required: 'Это поле не может быть пустым' })}
+                    className="order__delivery-entrance"
+                    type="tel"
+                    onInput={(el) => {
+                      setNum(el);
+                    }}
+                    placeholder="Подъезд"
+                  />
+                  {errors.name && (
+                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    id="level"
+                    {...register('level', { required: 'Это поле не может быть пустым' })}
+                    className="order__delivery-level"
+                    type="tel"
+                    onInput={(el) => {
+                      setNum(el);
+                    }}
+                    placeholder="Этаж"
+                  />
+                  {errors.name && (
+                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    id="comment"
+                    {...register('comment', { required: 'Это поле не может быть пустым' })}
+                    className="order__delivery-comment"
+                    type="text"
+                    placeholder="Комментарий"
+                  />
+                  {errors.name && (
+                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  )}
+                </div>
               </div>
             </>
           ) : (
