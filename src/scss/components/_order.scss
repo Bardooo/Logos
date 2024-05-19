@@ -181,8 +181,6 @@
       background-color: transparent;
       border: 1px solid rgba(255, 255, 255, 0.10);
       color: #FFF;
-      margin-right: 15px;
-      margin-bottom: 15px;
       &::placeholder {
         color: #FFF;
         font-size: 16px;
@@ -197,8 +195,6 @@
       background-color: transparent;
       border: 1px solid rgba(255, 255, 255, 0.10);
       color: #FFF;
-      margin-right: 15px;
-      margin-bottom: 15px;
       &::placeholder {
         color: #FFF;
         font-size: 16px;
@@ -213,8 +209,6 @@
       background-color: transparent;
       border: 1px solid rgba(255, 255, 255, 0.10);
       color: #FFF;
-      margin-right: 15px;
-      margin-bottom: 15px;
       &::placeholder {
         color: #FFF;
         font-size: 16px;
@@ -229,8 +223,6 @@
       background-color: transparent;
       border: 1px solid rgba(255, 255, 255, 0.10);
       color: #FFF;
-      margin-right: 15px;
-      margin-bottom: 15px;
       &::placeholder {
         color: #FFF;
         font-size: 16px;
@@ -245,8 +237,6 @@
       background-color: transparent;
       border: 1px solid rgba(255, 255, 255, 0.10);
       color: #FFF;
-      margin-right: 15px;
-      margin-bottom: 15px;
       &::placeholder {
         color: #FFF;
         font-size: 16px;
@@ -287,6 +277,7 @@
     }
   }
   &__checkout {
+    position: relative;
     border-radius: 10px;
     background: linear-gradient(90deg, #494544 0%, #504B4A 100%);
     padding: 30px;
@@ -315,8 +306,6 @@
       cursor: pointer;
     }
     &-btn {
-      width: 209px;
-      height: 51px;
       padding: 17px 47px;
       border-radius: 10px;
       color: #FFF;

@@ -17,6 +17,7 @@ interface OrderForm {
   entranceNum: string;
   level: string;
   comment: string;
+  checkbox: boolean;
 }
 
 const Order = () => {
@@ -42,7 +43,7 @@ const Order = () => {
   };
 
   const error: SubmitErrorHandler<OrderForm> = (errors: FieldErrors<OrderForm>) => {
-    console.log(errors);
+    console.error(errors);
   };
 
   const setName = (el: React.FormEvent<HTMLInputElement>) => {
@@ -79,7 +80,7 @@ const Order = () => {
               <input
                 id="name"
                 className="order__contacts-text"
-                {...register('name', { required: 'Это поле не может быть пустым' })}
+                {...register('name', { required: 'Поле "Имя" обязательно к заполнению' })}
                 type="text"
                 placeholder="Имя*"
                 onInput={(el) => {
@@ -94,15 +95,15 @@ const Order = () => {
               <input
                 id="phoneNum"
                 className="order__contacts-text"
-                {...register('phoneNum', { required: 'Это поле не может быть пустым' })}
+                {...register('phoneNum', { required: 'Поле "Телефон" обязательно к заполнению' })}
                 type="tel"
                 onChange={(val) => {
                   val.target.value = formatPhoneAndMask(val.target.value);
                 }}
                 placeholder="Телефон*"
               />
-              {errors.name && (
-                <p style={{ color: 'red', fontSize: '12px' }}>{errors.name.message}</p>
+              {errors.phoneNum && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.phoneNum.message}</p>
               )}
             </label>
           </div>
@@ -131,22 +132,24 @@ const Order = () => {
             <>
               <h5 className="order__delivery-subtitle">Адрес доставки</h5>
               <div className="order__delivery-address">
-                <div>
+                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
                   <input
                     id="sreet"
-                    {...register('sreet', { required: 'Это поле не может быть пустым' })}
+                    {...register('sreet', { required: 'Поле "Улица" обязательно к заполнению' })}
                     className="order__delivery-street"
                     type="text"
                     placeholder="Укажите улицу*"
                   />
-                  {errors.name && (
-                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  {errors.sreet && (
+                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.sreet.message}</p>
                   )}
                 </div>
-                <div>
+                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
                   <input
                     id="houseNum"
-                    {...register('houseNum', { required: 'Это поле не может быть пустым' })}
+                    {...register('houseNum', {
+                      required: 'Поле "Номер дома" обязательно к заполнению',
+                    })}
                     className="order__delivery-building"
                     type="tel"
                     onInput={(el) => {
@@ -154,73 +157,73 @@ const Order = () => {
                     }}
                     placeholder="Номер дома*"
                   />
-                  {errors.name && (
-                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  {errors.houseNum && (
+                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.houseNum.message}</p>
                   )}
                 </div>
-                <div>
+                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
                   <input
                     id="apartNum"
-                    {...register('apartNum', { required: 'Это поле не может быть пустым' })}
+                    {...register('apartNum', {
+                      required: 'Поле "№ квартиры/офиса" обязательно к заполнению',
+                    })}
                     className="order__delivery-number"
                     type="tel"
                     onInput={(el) => {
                       setNum(el);
                     }}
-                    placeholder="№ квартиры/офиса"
+                    placeholder="№ квартиры/офиса*"
                   />
-                  {errors.name && (
-                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  {errors.apartNum && (
+                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.apartNum.message}</p>
                   )}
                 </div>
-                <div>
+                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
                   <input
                     id="entranceNum"
-                    {...register('entranceNum', { required: 'Это поле не может быть пустым' })}
+                    {...register('entranceNum', {
+                      required: 'Поле "Подъезд" обязательно к заполнению',
+                    })}
                     className="order__delivery-entrance"
                     type="tel"
                     onInput={(el) => {
                       setNum(el);
                     }}
-                    placeholder="Подъезд"
+                    placeholder="Подъезд*"
                   />
-                  {errors.name && (
-                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  {errors.entranceNum && (
+                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.entranceNum.message}</p>
                   )}
                 </div>
-                <div>
+                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
                   <input
                     id="level"
-                    {...register('level', { required: 'Это поле не может быть пустым' })}
+                    {...register('level', { required: 'Поле "Этаж" обязательно к заполнению' })}
                     className="order__delivery-level"
                     type="tel"
                     onInput={(el) => {
                       setNum(el);
                     }}
-                    placeholder="Этаж"
+                    placeholder="Этаж*"
                   />
-                  {errors.name && (
-                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
+                  {errors.level && (
+                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.level.message}</p>
                   )}
                 </div>
                 <div>
                   <input
                     id="comment"
-                    {...register('comment', { required: 'Это поле не может быть пустым' })}
                     className="order__delivery-comment"
                     type="text"
                     placeholder="Комментарий"
                   />
-                  {errors.name && (
-                    <p style={{ color: 'red', fontSize: '12px', marginBottom: '8px' }}>{errors.name.message}</p>
-                  )}
                 </div>
               </div>
             </>
           ) : (
             <>
               <h5 className="order__delivery-subtitle">Выберите ресторан</h5>
-              <select className="order__delivery-rest">
+              <select className="order__delivery-rest" style={{ backgroundColor: '#504B4A' }}>
                 <option value="Выберите ресторан" disabled>
                   Выберите ресторан
                 </option>
@@ -234,13 +237,22 @@ const Order = () => {
         </div>
         <div className="order__checkout">
           <label className="order__checkout-check">
-            <input type="checkbox" name="cart" />
+            <input
+              id="checkbox"
+              {...register('checkbox', { required: 'Согласитесь с условиями или катитесь' })}
+              type="checkbox"
+            />
           </label>
           <p className="order__checkout-text">
             Я согласен на обработку моих перс. данных в соответствии с{' '}
             <span className="order__checkout-span">Условиями</span>
           </p>
           <button className="order__checkout-btn">Оформить заказ</button>
+          {errors.checkbox && (
+            <p style={{ color: 'red', fontSize: '12px', position: 'absolute', bottom: '27px' }}>
+              {errors.checkbox.message}
+            </p>
+          )}
         </div>
       </form>
     </section>
