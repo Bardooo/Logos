@@ -18,10 +18,12 @@ interface OrderForm {
   level: string;
   comment: string;
   checkbox: boolean;
+  activePay: string;
 }
 
 const Order = () => {
-  const [active, setActive] = React.useState('1');
+  const [activeDev, setActiveDev] = React.useState('1');
+  const [activePay, setActivePay] = React.useState('оплата картой');
   const {
     register,
     handleSubmit,
@@ -54,13 +56,22 @@ const Order = () => {
     el.currentTarget.value = el.currentTarget.value.replace(/[^\d+]/, '');
   };
 
-  const onClickLi = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const onClickLiDelivery = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const elements = document.querySelectorAll('.order__delivery-li');
     elements.forEach((el) => {
       el.classList.remove('active');
     });
     e.currentTarget.classList.add('active');
-    setActive(e.currentTarget.id);
+    setActiveDev(e.currentTarget.id);
+  };
+
+  const onClickLiPay = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const elements = document.querySelectorAll('.order__payment-li');
+    elements.forEach((el) => {
+      el.classList.remove('active');
+    });
+    e.currentTarget.classList.add('active');
+    setActivePay(e.currentTarget.id);
   };
 
   return (
@@ -112,14 +123,17 @@ const Order = () => {
           <h5 className="order__delivery-title">2. Доставка</h5>
           <div className="order__delivery-selector">
             <ul className="order__delivery-ul">
-              <li className="order__delivery-li active" id="1" onClick={(e) => onClickLi(e)}>
+              <li
+                className="order__delivery-li active"
+                id="1"
+                onClick={(e) => onClickLiDelivery(e)}>
                 Доставка
               </li>
-              <li className="order__delivery-li" id="2" onClick={(e) => onClickLi(e)}>
+              <li className="order__delivery-li" id="2" onClick={(e) => onClickLiDelivery(e)}>
                 Самовызов
               </li>
             </ul>
-            {active === '1' ? (
+            {activeDev === '1' ? (
               <div className="order__delivery-time">
                 <img className="order__delivery-img" src={time} alt="time" />
                 <p className="order__delivery-text">Доставим через 1 час 30 минут</p>
@@ -128,7 +142,7 @@ const Order = () => {
               <></>
             )}
           </div>
-          {active === '1' ? (
+          {activeDev === '1' ? (
             <>
               <h5 className="order__delivery-subtitle">Адрес доставки</h5>
               <div className="order__delivery-address">
@@ -213,6 +227,7 @@ const Order = () => {
                 <div>
                   <input
                     id="comment"
+                    {...register('comment')}
                     className="order__delivery-comment"
                     type="text"
                     placeholder="Комментарий"
@@ -234,6 +249,28 @@ const Order = () => {
               </select>
             </>
           )}
+        </div>
+        <div className="order__payment">
+          <h5 className="order__payment-title">3. Оплата</h5>
+          <div className="order__payment-selector">
+            <ul className="order__payment-ul" {...register('activePay')}>
+              <li
+                className="order__payment-li active"
+                id="оплата картой"
+                onClick={(e) => onClickLiPay(e)}>
+                Оплата онлайн
+              </li>
+              <li
+                className="order__payment-li"
+                id="курьеру картой"
+                onClick={(e) => onClickLiPay(e)}>
+                Курьеру картой
+              </li>
+              <li className="order__payment-li" id="наличными" onClick={(e) => onClickLiPay(e)}>
+                Наличными
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="order__checkout">
           <label className="order__checkout-check">
