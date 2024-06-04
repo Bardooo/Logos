@@ -19,11 +19,11 @@ interface OrderForm {
   comment: string;
   checkbox: boolean;
   activePay: string;
+  paymentCheckbox: boolean;
 }
 
 const Order = () => {
-  const [activeDev, setActiveDev] = React.useState('1');
-  const [activePay, setActivePay] = React.useState('оплата картой');
+  // const [activePay, setActivePay] = React.useState('оплата картой');
   const {
     register,
     handleSubmit,
@@ -56,23 +56,23 @@ const Order = () => {
     el.currentTarget.value = el.currentTarget.value.replace(/[^\d+]/, '');
   };
 
-  const onClickLiDelivery = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const elements = document.querySelectorAll('.order__delivery-li');
-    elements.forEach((el) => {
-      el.classList.remove('active');
+  const onClickPay = (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
+    const checks = document.querySelectorAll('#payment-checkbox');
+    checks.forEach((el) => {
+      // console.log(el.value);
     });
-    e.currentTarget.classList.add('active');
-    setActiveDev(e.currentTarget.id);
+    console.log(checks);
+    console.log(e.target);
   };
 
-  const onClickLiPay = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    const elements = document.querySelectorAll('.order__payment-li');
-    elements.forEach((el) => {
-      el.classList.remove('active');
-    });
-    e.currentTarget.classList.add('active');
-    setActivePay(e.currentTarget.id);
-  };
+  // const onClickLiPay = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  //   const elements = document.querySelectorAll('.order__payment-li');
+  //   elements.forEach((el) => {
+  //     el.classList.remove('active');
+  //   });
+  //   e.currentTarget.classList.add('active');
+  //   setActivePay(e.currentTarget.id);
+  // };
 
   return (
     <section className="order">
@@ -122,138 +122,123 @@ const Order = () => {
         <div className="order__delivery">
           <h5 className="order__delivery-title">2. Доставка</h5>
           <div className="order__delivery-selector">
-            <ul className="order__delivery-ul">
-              <li
-                className="order__delivery-li active"
-                id="1"
-                onClick={(e) => onClickLiDelivery(e)}>
-                Доставка
-              </li>
-              <li className="order__delivery-li" id="2" onClick={(e) => onClickLiDelivery(e)}>
-                Самовызов
-              </li>
-            </ul>
-            {activeDev === '1' ? (
-              <div className="order__delivery-time">
-                <img className="order__delivery-img" src={time} alt="time" />
-                <p className="order__delivery-text">Доставим через 1 час 30 минут</p>
-              </div>
-            ) : (
-              <></>
-            )}
+            <div className="order__delivery-time">
+              <img className="order__delivery-img" src={time} alt="time" />
+              <p className="order__delivery-text">Доставим через 1 час 30 минут</p>
+            </div>
           </div>
-          {activeDev === '1' ? (
-            <>
-              <h5 className="order__delivery-subtitle">Адрес доставки</h5>
-              <div className="order__delivery-address">
-                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
-                  <input
-                    id="sreet"
-                    {...register('sreet', { required: 'Поле "Улица" обязательно к заполнению' })}
-                    className="order__delivery-street"
-                    type="text"
-                    placeholder="Укажите улицу*"
-                  />
-                  {errors.sreet && (
-                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.sreet.message}</p>
-                  )}
-                </div>
-                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
-                  <input
-                    id="houseNum"
-                    {...register('houseNum', {
-                      required: 'Поле "Номер дома" обязательно к заполнению',
-                    })}
-                    className="order__delivery-building"
-                    type="tel"
-                    onInput={(el) => {
-                      setNum(el);
-                    }}
-                    placeholder="Номер дома*"
-                  />
-                  {errors.houseNum && (
-                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.houseNum.message}</p>
-                  )}
-                </div>
-                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
-                  <input
-                    id="apartNum"
-                    {...register('apartNum', {
-                      required: 'Поле "№ квартиры/офиса" обязательно к заполнению',
-                    })}
-                    className="order__delivery-number"
-                    type="tel"
-                    onInput={(el) => {
-                      setNum(el);
-                    }}
-                    placeholder="№ квартиры/офиса*"
-                  />
-                  {errors.apartNum && (
-                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.apartNum.message}</p>
-                  )}
-                </div>
-                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
-                  <input
-                    id="entranceNum"
-                    {...register('entranceNum', {
-                      required: 'Поле "Подъезд" обязательно к заполнению',
-                    })}
-                    className="order__delivery-entrance"
-                    type="tel"
-                    onInput={(el) => {
-                      setNum(el);
-                    }}
-                    placeholder="Подъезд*"
-                  />
-                  {errors.entranceNum && (
-                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.entranceNum.message}</p>
-                  )}
-                </div>
-                <div style={{ marginRight: '15px', marginBottom: '15px' }}>
-                  <input
-                    id="level"
-                    {...register('level', { required: 'Поле "Этаж" обязательно к заполнению' })}
-                    className="order__delivery-level"
-                    type="tel"
-                    onInput={(el) => {
-                      setNum(el);
-                    }}
-                    placeholder="Этаж*"
-                  />
-                  {errors.level && (
-                    <p style={{ color: 'red', fontSize: '12px' }}>{errors.level.message}</p>
-                  )}
-                </div>
-                <div>
-                  <input
-                    id="comment"
-                    {...register('comment')}
-                    className="order__delivery-comment"
-                    type="text"
-                    placeholder="Комментарий"
-                  />
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <h5 className="order__delivery-subtitle">Выберите ресторан</h5>
-              <select className="order__delivery-rest" style={{ backgroundColor: '#504B4A' }}>
-                <option value="Выберите ресторан" disabled>
-                  Выберите ресторан
-                </option>
-                <option value="Шипиловский">Шипиловский</option>
-                <option value="Южный">Южный</option>
-                <option value="Каширский">Каширский</option>
-                <option value="Frattamaggiore">Frattamaggiore</option>
-              </select>
-            </>
-          )}
+          <h5 className="order__delivery-subtitle">Адрес доставки</h5>
+          <div className="order__delivery-address">
+            <div style={{ marginRight: '15px', marginBottom: '15px' }}>
+              <input
+                id="sreet"
+                {...register('sreet', { required: 'Поле "Улица" обязательно к заполнению' })}
+                className="order__delivery-street"
+                type="text"
+                placeholder="Укажите улицу*"
+              />
+              {errors.sreet && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.sreet.message}</p>
+              )}
+            </div>
+            <div style={{ marginRight: '15px', marginBottom: '15px' }}>
+              <input
+                id="houseNum"
+                {...register('houseNum', {
+                  required: 'Поле "Номер дома" обязательно к заполнению',
+                })}
+                className="order__delivery-building"
+                type="tel"
+                onInput={(el) => {
+                  setNum(el);
+                }}
+                placeholder="Номер дома*"
+              />
+              {errors.houseNum && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.houseNum.message}</p>
+              )}
+            </div>
+            <div style={{ marginRight: '15px', marginBottom: '15px' }}>
+              <input
+                id="apartNum"
+                {...register('apartNum', {
+                  required: 'Поле "№ квартиры/офиса" обязательно к заполнению',
+                })}
+                className="order__delivery-number"
+                type="tel"
+                onInput={(el) => {
+                  setNum(el);
+                }}
+                placeholder="№ квартиры/офиса*"
+              />
+              {errors.apartNum && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.apartNum.message}</p>
+              )}
+            </div>
+            <div style={{ marginRight: '15px', marginBottom: '15px' }}>
+              <input
+                id="entranceNum"
+                {...register('entranceNum', {
+                  required: 'Поле "Подъезд" обязательно к заполнению',
+                })}
+                className="order__delivery-entrance"
+                type="tel"
+                onInput={(el) => {
+                  setNum(el);
+                }}
+                placeholder="Подъезд*"
+              />
+              {errors.entranceNum && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.entranceNum.message}</p>
+              )}
+            </div>
+            <div style={{ marginRight: '15px', marginBottom: '15px' }}>
+              <input
+                id="level"
+                {...register('level', { required: 'Поле "Этаж" обязательно к заполнению' })}
+                className="order__delivery-level"
+                type="tel"
+                onInput={(el) => {
+                  setNum(el);
+                }}
+                placeholder="Этаж*"
+              />
+              {errors.level && (
+                <p style={{ color: 'red', fontSize: '12px' }}>{errors.level.message}</p>
+              )}
+            </div>
+            <div>
+              <input
+                id="comment"
+                {...register('comment')}
+                className="order__delivery-comment"
+                type="text"
+                placeholder="Комментарий"
+              />
+            </div>
+          </div>
         </div>
         <div className="order__payment">
           <h5 className="order__payment-title">3. Оплата</h5>
           <div className="order__payment-selector">
-            <ul className="order__payment-ul" {...register('activePay')}>
+            <div className="order__payment-wrap">
+              <label className="order__payment-lable" onClick={(e) => onClickPay(e)}>
+                <input id="payment-checkbox" {...register('paymentCheckbox')} type="checkbox" />
+                <div className="order__payment-custom-check"></div>
+                <p className="order__payment-text">Оплата онлайн</p>
+              </label>
+              <label className="order__payment-lable" onClick={(e) => onClickPay(e)}>
+                <input id="payment-checkbox" {...register('paymentCheckbox')} type="checkbox" />
+                <div className="order__payment-custom-check"></div>
+                <p className="order__payment-text">Курьеру картой</p>
+              </label>
+              <label className="order__payment-lable" onClick={(e) => onClickPay(e)}>
+                <input id="payment-checkbox" {...register('paymentCheckbox')} type="checkbox" />
+                <div className="order__payment-custom-check"></div>
+                <p className="order__payment-text">Наличными</p>
+              </label>
+            </div>
+            {/* <ul className="order__payment-ul" {...register('activePay')}>
               <li
                 className="order__payment-li active"
                 id="оплата картой"
@@ -269,7 +254,7 @@ const Order = () => {
               <li className="order__payment-li" id="наличными" onClick={(e) => onClickLiPay(e)}>
                 Наличными
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className="order__checkout">
