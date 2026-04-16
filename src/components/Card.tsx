@@ -25,7 +25,7 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, weight, text, price, c
   const dispatch = useDispatch();
   const {totalCount} = useSelector(selectCart);
   const setCount = totalCount.get(title) ? totalCount.get(title) : 0
-  
+
   const onClickRemove = () => {
     dispatch(removeItem(id))
   }
